@@ -23,7 +23,7 @@ abstract class AppTextStyles {
 
   /// - weight: w600
   /// - family: cairo
-  static TextStyle w600 = TextStyle(fontWeight: FontWeight.w600);
+  static TextStyle w600 = TextStyle(fontWeight: FontWeight.w600,color: AppColors.green);
   static TextStyle bold = TextStyle(
       fontSize: 40,
       fontWeight: FontWeight.bold,
