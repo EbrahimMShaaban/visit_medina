@@ -4,6 +4,7 @@ import 'package:visit_medina/shared/components/navigator.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/styles/colors.dart';
+import '../../Activities/view.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
             text1: "دخول",
             onPressed: () {
 
-              navigateTo(context, AppLayout());
+              navigateTo(context, Activities());
             },
           )
         ],

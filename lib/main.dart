@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:visit_medina/features/welcamScreen/view.dart';import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:visit_medina/features/welcamScreen/view.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:visit_medina/shared/styles/theme.dart';
 void main() {
@@ -9,7 +10,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
 
       title: 'Flutter Demo',
       theme:lightTheme,
-        localizationsDelegates:  [
+        localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
