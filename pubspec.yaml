@@ -86,6 +86,7 @@ flutter:
     - family: Schyler
       fonts:
         - asset: assets/fonts/Cairo-Medium.ttf
+          weight: 100
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
