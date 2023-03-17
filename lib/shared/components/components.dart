@@ -8,6 +8,7 @@ class ButtonTemplate extends StatelessWidget {
   ButtonTemplate({
     Key? key,
     required this.color,
+     this.colortext,
     required this.text1,
     required this.onPressed,
     this.text2 = "",
@@ -18,6 +19,7 @@ class ButtonTemplate extends StatelessWidget {
     this.fontSize = 18,
   }) : super(key: key);
   Color color;
+  Color? colortext;
   String text1;
   String text2;
   String text3;
@@ -30,7 +32,8 @@ class ButtonTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),      child: MaterialButton(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+      child: MaterialButton(
         minWidth: minwidth,
         height: minheight,
         onPressed: onPressed,
@@ -38,20 +41,21 @@ class ButtonTemplate extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
         child: Center(
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: [ Center(
+              child: Text(text1,
+                style: AppTextStyles.bold.copyWith(
+                    fontSize: 25, color: colortext == null ?AppColors.white:colortext),),
+            ),
+
+              SizedBox(
+                width: 10,
+              ),
               icon == null
                   ? SizedBox()
                   : Center(
-                      child: Icon(icon, size: 21, color: AppColors.white),
-                    ),
-              SizedBox(
-                width: 5,
-              ),
-              Center(
-                child: Text(text1,
-                    style: AppTextStyles.bold.copyWith(fontSize: 30),),
+                child: Icon(icon, size: 35, color: AppColors.white),
               ),
             ],
           ),
@@ -100,13 +104,13 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
               border: InputBorder.none,
               suffixIcon: widget.isPassword
                   ? IconButton(
-                      splashRadius: 20,
-                      icon: Icon(
-                          _isObscure == true
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
-                          color: AppColors.Bluehint),
-                      onPressed: () => setState(() => _isObscure = !_isObscure))
+                  splashRadius: 20,
+                  icon: Icon(
+                      _isObscure == true
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: AppColors.Bluehint),
+                  onPressed: () => setState(() => _isObscure = !_isObscure))
                   : null,
               filled: true,
               fillColor: AppColors.greenlight,
@@ -176,15 +180,15 @@ void showMyDialog(String _message, BuildContext context) async {
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                  ))),
+                            borderRadius: BorderRadius.circular(25.0),
+                          ))),
                   onPressed: () {
                     Navigator.pop(context, "ok");
                   },
                   child: const Text(
                     "ok",
                     style:
-                        TextStyle(color: AppColors.primarycolor, fontSize: 22),
+                    TextStyle(color: AppColors.primarycolor, fontSize: 22),
                   )),
             )
           ],
@@ -217,7 +221,7 @@ class NavigateToOption extends StatelessWidget {
               children: [
                 Text(name,
                     style:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                 Spacer(),
                 SizedBox(
                   width: 40,
@@ -260,7 +264,7 @@ class TeamsName extends StatelessWidget {
             padding: EdgeInsets.all(10),
             color: AppColors.materialGrey,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: RichText(
               text: TextSpan(
                 text: 'Team ',
