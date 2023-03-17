@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:visit_medina/features/Activities/view.dart';
 import 'package:visit_medina/shared/components/components.dart';
+import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
+
+import '../../../shared/styles/images.dart';
 
 class ProfilUser extends StatelessWidget {
   const ProfilUser({Key? key}) : super(key: key);
@@ -9,6 +13,24 @@ class ProfilUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          Directionality(
+              textDirection: TextDirection.ltr,
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: AppColors.green,
+                  )))
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Image.asset(AppImages.drawer, height: 30),
+        ),
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
@@ -43,8 +65,9 @@ class ProfilUser extends StatelessWidget {
               text2: '***********',
             ),
             Text(
-              ". صلاحيات",
+              " صلاحيات",
               style: AppTextStyles.bold.copyWith(
+                fontSize: 22,
                 color: AppColors.green,
               ),
             ),
@@ -53,15 +76,16 @@ class ProfilUser extends StatelessWidget {
                 colortext: AppColors.green,
                 text1: "الحجز",
                 onPressed: () {}),
-
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             ButtonTemplate(
                 color: AppColors.greenlight,
                 colortext: AppColors.green,
                 text1: "اضف انشظة وفعاليات",
-                onPressed: () {}),
-
-
+                onPressed: () {
+                  navigateTo(context, Activities());
+                }),
             Expanded(
               child: SizedBox(),
             ),
@@ -98,17 +122,23 @@ class ContainerData extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(text1, style: AppTextStyles.w600.copyWith(fontSize: 20)),
-          Container(
-            height: 45,
-            width: MediaQuery.of(context).size.width / 2,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: AppColors.greenlight),
-            child: Center(
-              child: Text(text2,
-                  style: AppTextStyles.bold
-                      .copyWith(fontSize: 15, color: AppColors.green)),
+          Expanded(
+              flex: 3,
+              child: Text(text1,maxLines: 1,
+                  style: AppTextStyles.w600.copyWith(fontSize: 18))),
+          Expanded(
+            flex: 5,
+            child: Container(
+              height: 45,
+              // width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.greenlight),
+              child: Center(
+                child: Text(text2,
+                    style: AppTextStyles.bold
+                        .copyWith(fontSize: 15, color: AppColors.green)),
+              ),
             ),
           ),
         ],

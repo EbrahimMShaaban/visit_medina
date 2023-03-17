@@ -3,12 +3,32 @@ import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
+import '../../../shared/styles/images.dart';
+
 class ProfilAdmin extends StatelessWidget {
   const ProfilAdmin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          Directionality(
+              textDirection: TextDirection.ltr,
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: AppColors.green,
+                  )))
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Image.asset(AppImages.drawer, height: 30),
+        ),
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
@@ -45,6 +65,7 @@ class ProfilAdmin extends StatelessWidget {
             Text(
               ". صلاحيات",
               style: AppTextStyles.bold.copyWith(
+
                 color: AppColors.green,
               ),
             ),
@@ -53,14 +74,17 @@ class ProfilAdmin extends StatelessWidget {
                 colortext: AppColors.green,
                 text1: "اضف مكان سياحي",
                 onPressed: () {}),
-
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             ButtonTemplate(
                 color: AppColors.greenlight,
                 colortext: AppColors.green,
                 text1: "اضف انشظة وفعاليات",
-                onPressed: () {}),            SizedBox(height: 5,),
-
+                onPressed: () {}),
+            SizedBox(
+              height: 5,
+            ),
             ButtonTemplate(
                 color: AppColors.greenlight,
                 colortext: AppColors.green,

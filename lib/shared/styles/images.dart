@@ -7,5 +7,8 @@ class AppImages {
   static const String iconPlaces = 'assets/images/img_4.png';
   static const String iconRestaurants = 'assets/images/img_5.png';
   static const String iconCoffe = 'assets/images/img_6.png';
+  static const String drawer = 'assets/images/drawer.png';
+  static const String location = 'assets/images/location.png';
+  static const String done = 'assets/images/done.png';
 
 }

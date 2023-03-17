@@ -3,12 +3,29 @@ import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
+import '../../../shared/styles/images.dart';
+
 class ProfilOwner extends StatelessWidget {
   const ProfilOwner({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:AppBar(
+        actions: [
+          Directionality(
+              textDirection: TextDirection.ltr,
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back,color: AppColors.green,)))
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Image.asset(AppImages.drawer, height: 30),
+        ),
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
