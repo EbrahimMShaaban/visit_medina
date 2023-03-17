@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
+
 abstract class AppTextStyles {
   /// - weight: w200
   /// - family: cairo
@@ -22,6 +24,10 @@ abstract class AppTextStyles {
   /// - weight: w600
   /// - family: cairo
   static TextStyle w600 = TextStyle(fontWeight: FontWeight.w600);
+  static TextStyle bold = TextStyle(
+      fontSize: 40,
+      fontWeight: FontWeight.bold,
+      color: AppColors.white);
 
   /// - weight: w700
   /// - family: cairo
