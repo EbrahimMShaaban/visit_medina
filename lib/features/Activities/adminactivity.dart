@@ -53,7 +53,7 @@ class _ActivitiesState extends State<Activities> {
                   color: AppColors.green,
                   child: Center(
                       child: Text(
-                        'الملف الشخصي (المالك)',
+                        'الملف الشخصي (المسؤول)',
                         style: AppTextStyles.w600.copyWith(color: Colors.white),
                       )),
                 ),

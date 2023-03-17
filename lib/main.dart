@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:visit_medina/features/Home/AppLayout.dart';
 import 'package:visit_medina/features/User/Profile/view.dart';
+import 'package:visit_medina/features/welcamScreen/view.dart';
 
 
 import 'package:visit_medina/shared/styles/theme.dart';
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
           Locale('ar'), // English
           // Locale('es'), // Spanish
         ],
-      home:ProfilUser()
+      home:OnBoardingScreen()
     );
   }
 }
