@@ -10,5 +10,6 @@ class AppImages {
   static const String drawer = 'assets/images/drawer.png';
   static const String location = 'assets/images/location.png';
   static const String done = 'assets/images/done.png';
+  static const String person = 'assets/images/person.jpg';
 
 }

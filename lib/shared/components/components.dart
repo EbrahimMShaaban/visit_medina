@@ -1,9 +1,14 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 
 import '../styles/colors.dart';
 import '../styles/styles.dart';
 import 'constants.dart';
-
+import 'package:flutter/material.dart';
+import '../../../../shared/components/components.dart';
+import '../../../../shared/components/constants.dart';
+import '../../../../shared/styles/colors.dart';
+import '../../../../shared/styles/styles.dart';
 class ButtonTemplate extends StatelessWidget {
   ButtonTemplate({
     Key? key,
@@ -133,67 +138,24 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
   }
 }
 
-class BottomText extends StatelessWidget {
-  const BottomText({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      child: RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-              text: "",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-              ),
-              children: [
-                TextSpan(
-                    text: "FCIS - ",
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: "Facult of comuters \n and informatoin science"),
-              ])),
-    );
-  }
-}
+void showMyDialog({required BuildContext context, required Function()? ontap, required String message}) async {
+  return await AwesomeDialog(
+    context: context,
+    dialogType: DialogType.info,
 
-void showMyDialog(String _message, BuildContext context) async {
-  return await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          //  backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          contentPadding: EdgeInsets.zero,
-          title: Text("Error"),
-          content: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(_message),
-          ),
-          actions: [
-            Center(
-              child: TextButton(
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                          ))),
-                  onPressed: () {
-                    Navigator.pop(context, "ok");
-                  },
-                  child: const Text(
-                    "ok",
-                    style:
-                    TextStyle(color: AppColors.primarycolor, fontSize: 22),
-                  )),
-            )
-          ],
-        );
-      });
+    animType: AnimType.rightSlide,
+    title:message ,
+descTextStyle: TextStyle(color: AppColors.primarycolor ),
+    desc: ' هل انت متاكد انك تريد $message ؟',
+    btnCancelText: "لا",
+
+
+    btnCancelOnPress: (){},
+    btnOkText: "نعم",
+    btnOkColor: AppColors.primarycolor,
+    btnOkOnPress: ontap,
+  ).show();
 }
 
 ///
@@ -283,4 +245,53 @@ class TeamsName extends StatelessWidget {
       ),
     );
   }
+}
+
+
+
+Future commentReply(
+    BuildContext context,
+    TextEditingController controller
+    )
+{
+  return  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: AppColors.white,
+          title: const Center(child: Text('رد')),
+          titleTextStyle: AppTextStyles.bold.apply(color: AppColors.black),
+          //titlePadding: const EdgeInsets.symmetric(vertical: 20),
+          // elevation: 10,
+          insetPadding: const EdgeInsets.all(10),
+          shape: const RoundedRectangleBorder(
+              side: BorderSide(
+                //color: AppColors.pink,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(15))),
+          content: SizedBox(
+            width: 100,
+            child: SingleChildScrollView(
+              child: TextFieldTemplate(
+                hintText: 'رد علي الشكوي',
+                icon: null, controller: controller,
+
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            Center(
+              child: ButtonTemplate(
+                minwidth:100,
+                color: AppColors.primarycolor,
+                onPressed: () {},
+                text1: 'ارسال',
+
+              ),
+            ),
+
+          ],
+        );
+      });
+
 }
