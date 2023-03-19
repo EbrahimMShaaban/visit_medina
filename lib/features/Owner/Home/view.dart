@@ -13,6 +13,7 @@ import '../../../shared/styles/images.dart';
 import '../../registration/regist_screen/view.dart';
 import '../Activities/owneractivity.dart';
 import '../Activities/under processing.dart';
+import 'bookings.dart';
 
 class HomeOwner extends StatelessWidget {
   const HomeOwner({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class HomeOwner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("الملف الشخصي (المالك)",
+        title: Text("الصفحة الرئيسية(المالك)",
             style: AppTextStyles.bold
                 .copyWith(fontSize: 25, color: AppColors.green)),
       ),
@@ -96,7 +97,7 @@ class HomeOwner extends StatelessWidget {
                 colortext: AppColors.green,
                 text1: "عرض الحجوزات",
                 onPressed: () {
-                  navigateTo(context, CommentsScreen());
+                  navigateTo(context, BookingScreen());
                 }),
             Expanded(
               child: SizedBox(),
