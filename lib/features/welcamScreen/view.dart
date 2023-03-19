@@ -49,7 +49,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   var boardController = PageController();
 
   void finishOnBoarding() {
-
     navigateAndFinished(context, RegistScreen());
     // CacheHelper.saveData(key: 'token', value: true).then((value) {
     //
@@ -93,54 +92,54 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 10.0, vertical: 5),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                    isLast
-                        ? SizedBox(height: 50)
-                        : TextButton(
-                            onPressed: () {
-                              finishOnBoarding();
-                            },
-                            child: Text("تخطي",
-                                style: AppTextStyles.w800.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                    color: AppColors.green, fontSize: 16)),
-                          ),
-                    SmoothPageIndicator(
-                      controller: boardController,
-                      count: boarding.length,
-                      effect: WormEffect(
-                        activeDotColor: AppColors.green,
-                        //HexColor('2BD596'),
-                        spacing: 25,
-                        dotWidth: 9,
-                        dotHeight: 9,
-                      ),
-                    ), // بياخد كل المسافة اللي فالنص
-                    FloatingActionButton(
-                      mini: true,
-                      backgroundColor: AppColors.green,
-
-                      onPressed: () {
-                        if (isLast) {
-                          finishOnBoarding();
-                        } else {
-                          boardController.nextPage(
-                              duration: Duration(
-                                milliseconds: 750,
+                        isLast
+                            ? SizedBox(height: 50)
+                            : TextButton(
+                                onPressed: () {
+                                  finishOnBoarding();
+                                },
+                                child: Text("تخطي",
+                                    style: AppTextStyles.w800.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.green,
+                                        fontSize: 16)),
                               ),
-                              curve: Curves.fastOutSlowIn);
-                        }
-                      },
-                      child: Icon(
-                        nextIcon,
-                      ),
-                    )
-                  ]),
+                        SmoothPageIndicator(
+                          controller: boardController,
+                          count: boarding.length,
+                          effect: WormEffect(
+                            activeDotColor: AppColors.green,
+                            //HexColor('2BD596'),
+                            spacing: 25,
+                            dotWidth: 9,
+                            dotHeight: 9,
+                          ),
+                        ), // بياخد كل المسافة اللي فالنص
+                        FloatingActionButton(
+                          mini: true,
+                          backgroundColor: AppColors.green,
+                          onPressed: () {
+                            if (isLast) {
+                              finishOnBoarding();
+                            } else {
+                              boardController.nextPage(
+                                  duration: Duration(
+                                    milliseconds: 750,
+                                  ),
+                                  curve: Curves.fastOutSlowIn);
+                            }
+                          },
+                          child: Icon(
+                            nextIcon,
+                          ),
+                        )
+                      ]),
                 ),
               ),
             ],
@@ -154,7 +153,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height/1.7,
+            height: MediaQuery.of(context).size.height / 1.9,
             // color: Colors.yellow,
             child: Image.asset(
               '${model.image}',

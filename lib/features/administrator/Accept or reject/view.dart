@@ -58,65 +58,71 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                radius: 30.0,
-                backgroundImage: AssetImage(AppImages.person),
-                backgroundColor: Colors.transparent,
+              Expanded(flex:1,child
+
+                : CircleAvatar(
+                  radius: 30.0,
+                  backgroundImage: AssetImage(AppImages.person),
+                  backgroundColor: Colors.transparent,
+                ),
               ),
               SizedBox(
-                width: 20,
+                width: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "احمد بهجت الباز",
-                    style: AppTextStyles.bold
-                        .copyWith(color: AppColors.primarycolor, fontSize: 22),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: "أسم الموقع :",
+              Expanded(
+                flex: 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "احمد بهجت الباز",
                       style: AppTextStyles.bold.copyWith(
-                          color: AppColors.primarycolor, fontSize: 19),
-                      // style: AppTextStyles.w300.apply(
-                      //   color: Colors.black,
-                      // ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: "  فندق البسفور المدينة",
-                          style: AppTextStyles.bold.copyWith(
-                              color: AppColors.greyDark, fontSize: 16),
-                          //  style: AppTextStyles.lrTitles
-                        ),
-                      ],
+                          color: AppColors.primarycolor, fontSize: 22),
                     ),
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: "نوع الحدث :",
-                      style: AppTextStyles.bold.copyWith(
-                          color: AppColors.primarycolor, fontSize: 19),
-                      // style: AppTextStyles.w300.apply(
-                      //   color: Colors.black,
-                      // ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: "  مكان سياحى",
-                          style: AppTextStyles.bold.copyWith(
-                              color: AppColors.greyDark, fontSize: 16),
-                          //  style: AppTextStyles.lrTitles
-                        ),
-                      ],
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                ],
+                    RichText(
+                      text: TextSpan(
+                        text: "أسم الموقع :",
+                        style: AppTextStyles.bold.copyWith(
+                            color: AppColors.primarycolor, fontSize: 19),
+                        // style: AppTextStyles.w300.apply(
+                        //   color: Colors.black,
+                        // ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: "  فندق البسفور المدينة",
+                            style: AppTextStyles.bold.copyWith(
+                                color: AppColors.greyDark, fontSize: 16),
+                            //  style: AppTextStyles.lrTitles
+                          ),
+                        ],
+                      ),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        text: "نوع الحدث :",
+                        style: AppTextStyles.bold.copyWith(
+                            color: AppColors.primarycolor, fontSize: 19),
+                        // style: AppTextStyles.w300.apply(
+                        //   color: Colors.black,
+                        // ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: "  مكان سياحى",
+                            style: AppTextStyles.bold.copyWith(
+                                color: AppColors.greyDark, fontSize: 16),
+                            //  style: AppTextStyles.lrTitles
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -137,8 +143,10 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                   text:
                       "يقع هذا الفندق على بعد 3 دقائق سيراً على الأقدام من المسجد النبوي الشريف، ويضم غرفاً مزودة بتلفزيون مع قنوات فضائية",
 
-                  style: AppTextStyles.bold
-                      .copyWith(color: AppColors.greyDark, fontSize: 16,),
+                  style: AppTextStyles.bold.copyWith(
+                    color: AppColors.greyDark,
+                    fontSize: 16,
+                  ),
 
                   //  style: AppTextStyles.lrTitles
                 ),
@@ -161,7 +169,8 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
               SizedBox(
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: Text(
-                  "Madina 13 Al Madina, المدينة المنور",                  maxLines: 4,
+                  "Madina 13 Al Madina, المدينة المنور",
+                  maxLines: 4,
                   style: AppTextStyles.bold
                       .copyWith(color: AppColors.primarycolor, fontSize: 13),
                 ),

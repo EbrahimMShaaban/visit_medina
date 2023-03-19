@@ -61,7 +61,7 @@ class HomeAdmin extends StatelessWidget {
             ButtonTemplate(
                 color: AppColors.greenlight,
                 colortext: AppColors.green,
-                text1: "اضف انشظة وفعاليات",
+                text1: "اضف انشطة وفعاليات",
                 onPressed: () {
                   navigateTo(
                       context,
@@ -124,22 +124,29 @@ class ContainerData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15.0, left: 50),
+      padding: const EdgeInsets.only(bottom: 15.0, left: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(text1, style: AppTextStyles.w600.copyWith(fontSize: 15)),
-          Container(
-            height: 45,
-            width: MediaQuery.of(context).size.width / 2,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: AppColors.greenlight),
-            child: Center(
-              child: Text(text2,
-                  style: AppTextStyles.bold
-                      .copyWith(fontSize: 15, color: AppColors.green)),
+          Expanded(
+              flex: 6,
+              child: Text(text1,maxLines: 1,
+                  style: AppTextStyles.w600.copyWith(fontSize: 18))),
+
+          Expanded(
+            flex: 8,
+            child: Container(
+              height: 45,
+              // width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.greenlight),
+              child: Center(
+                child: Text(text2,
+                    style: AppTextStyles.bold
+                        .copyWith(fontSize: 13, color: AppColors.green)),
+              ),
             ),
           ),
         ],

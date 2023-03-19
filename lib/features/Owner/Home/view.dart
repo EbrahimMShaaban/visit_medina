@@ -55,12 +55,12 @@ class HomeOwner extends StatelessWidget {
             ButtonTemplate(
                 color: AppColors.greenlight,
                 colortext: AppColors.green,
-                text1: "اضف انشظة وفعاليات",
+                text1: "أضف أنشطة وفعاليات",
                 onPressed: () {
                   navigateTo(
                       context,
                       ActivitiesOwner(
-                        titleAppBar: "إضافة أنشطة وفعاليات",
+                        titleAppBar: "أضف أنشطة وفعاليات",
                       ));
                 }),
             SizedBox(
