@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:visit_medina/features/Activities/view.dart';
 import 'package:visit_medina/shared/components/components.dart';
-import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
@@ -39,7 +37,7 @@ class ProfilUser extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.only(top: 10, bottom: 20),
-              height: 90,
+              height: 80,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -84,7 +82,7 @@ class ProfilUser extends StatelessWidget {
                 colortext: AppColors.green,
                 text1: "اضف انشظة وفعاليات",
                 onPressed: () {
-                  navigateTo(context, Activities());
+                  // navigateTo(context, Activities());
                 }),
             Expanded(
               child: SizedBox(),
@@ -117,7 +115,7 @@ class ContainerData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 15.0, left: 50),
+      padding: const EdgeInsets.only(bottom: 15.0, left: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,6 +124,7 @@ class ContainerData extends StatelessWidget {
               flex: 3,
               child: Text(text1,maxLines: 1,
                   style: AppTextStyles.w600.copyWith(fontSize: 18))),
+
           Expanded(
             flex: 5,
             child: Container(
@@ -137,7 +136,7 @@ class ContainerData extends StatelessWidget {
               child: Center(
                 child: Text(text2,
                     style: AppTextStyles.bold
-                        .copyWith(fontSize: 15, color: AppColors.green)),
+                        .copyWith(fontSize: 13, color: AppColors.green)),
               ),
             ),
           ),

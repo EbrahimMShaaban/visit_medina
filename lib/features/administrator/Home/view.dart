@@ -1,33 +1,27 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:visit_medina/features/administrator/Accept%20or%20reject/view.dart';
+import 'package:visit_medina/features/administrator/reportScreen/view.dart';
+import 'package:visit_medina/features/registration/Login/loginscreen.dart';
 import 'package:visit_medina/shared/components/components.dart';
+import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
 import '../../../shared/styles/images.dart';
+import '../../registration/regist_screen/view.dart';
+import '../Activities/adminactivity.dart';
 
-class ProfilAdmin extends StatelessWidget {
-  const ProfilAdmin({Key? key}) : super(key: key);
+class HomeAdmin extends StatelessWidget {
+  const HomeAdmin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          Directionality(
-              textDirection: TextDirection.ltr,
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: AppColors.green,
-                  )))
-        ],
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Image.asset(AppImages.drawer, height: 30),
-        ),
+        title: Text("الملف الشخصي (المسؤول)",
+            style: AppTextStyles.bold
+                .copyWith(fontSize: 25, color: AppColors.green)),
       ),
       body: SafeArea(
           child: Padding(
@@ -35,45 +29,32 @@ class ProfilAdmin extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 20),
-              height: 90,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: AppColors.green),
-              child: Center(
-                  child: Text("الملف الشخصي (المسؤول)",
-                      style: AppTextStyles.bold.copyWith(fontSize: 20))),
-            ),
+
             ContainerData(
-              text1: 'الاسم الاول',
-              text2: 'خالد',
-            ),
-            ContainerData(
-              text1: 'الاسم الاخير',
-              text2: 'عمر',
+              text1: 'الاسم ',
+              text2: 'خالد محمد',
             ),
             ContainerData(
               text1: 'البريد الالكتروني',
               text2: 'KhalidOmar@hotmail.com',
             ),
-            ContainerData(
-              text1: 'كلمة المرور',
-              text2: '***********',
-            ),
+
             Text(
               ". صلاحيات",
-              style: AppTextStyles.bold.copyWith(
-
-                color: AppColors.green,
-              ),
+              style: AppTextStyles.w600
+                  .copyWith(color: AppColors.green, fontSize: 30),
             ),
             ButtonTemplate(
                 color: AppColors.greenlight,
                 colortext: AppColors.green,
                 text1: "اضف مكان سياحي",
-                onPressed: () {}),
+                onPressed: () {
+                  navigateTo(
+                      context,
+                      Activities(
+                        titleAppBar: "اضف مكان سياحي",
+                      ));
+                }),
             SizedBox(
               height: 5,
             ),
@@ -81,7 +62,13 @@ class ProfilAdmin extends StatelessWidget {
                 color: AppColors.greenlight,
                 colortext: AppColors.green,
                 text1: "اضف انشظة وفعاليات",
-                onPressed: () {}),
+                onPressed: () {
+                  navigateTo(
+                      context,
+                      Activities(
+                        titleAppBar: "إضافة أنشطة وفعاليات",
+                      ));
+                }),
             SizedBox(
               height: 5,
             ),
@@ -89,7 +76,17 @@ class ProfilAdmin extends StatelessWidget {
                 color: AppColors.greenlight,
                 colortext: AppColors.green,
                 text1: "قبول أو رفض طلب المالك",
-                onPressed: () {}),
+                onPressed: () {
+                  navigateTo(context, Accept_Or_Reject());
+                }),
+
+            ButtonTemplate(
+                color: AppColors.greenlight,
+                colortext: AppColors.green,
+                text1: "تقرير احصائي عن الحجوزات",
+                onPressed: () {
+                  navigateTo(context,  ReportScreen());
+                }),
             Expanded(
               child: SizedBox(),
             ),
@@ -99,7 +96,13 @@ class ProfilAdmin extends StatelessWidget {
                   color: AppColors.green,
                   text1: "تسجيل الخروج",
                   icon: Icons.output_sharp,
-                  onPressed: () {}),
+                  onPressed: () {
+                    showMyDialog(
+                        context: context,
+                        ontap: () {
+                          navigateAndFinished(context, RegistScreen());
+                        }, message:  "تسجيل الخروج");
+                  }),
             )
           ],
         ),
@@ -126,7 +129,7 @@ class ContainerData extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(text1, style: AppTextStyles.w600.copyWith(fontSize: 20)),
+          Text(text1, style: AppTextStyles.w600.copyWith(fontSize: 15)),
           Container(
             height: 45,
             width: MediaQuery.of(context).size.width / 2,

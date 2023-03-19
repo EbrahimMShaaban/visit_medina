@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:visit_medina/shared/styles/styles.dart';
 
 import 'colors.dart';
+
 ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.white,
     platform: TargetPlatform.iOS,
@@ -27,17 +29,14 @@ ThemeData lightTheme = ThemeData(
         color: AppColors.green,
       ),
     ),
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
         backgroundColor: AppColors.white,
         toolbarHeight: 60,
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: AppColors.primarycolor, size: 25),
         titleTextStyle: TextStyle(
-          color: AppColors.primarycolor,
-          fontSize: 32,
-          fontWeight: FontWeight.w500,
-        ),
+            fontSize: 25, color: AppColors.primarycolor, fontWeight:FontWeight.bold),
         systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: AppColors.primarycolor,
             statusBarIconBrightness: Brightness.light)),
