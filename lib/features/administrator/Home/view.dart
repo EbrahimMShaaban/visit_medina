@@ -32,11 +32,11 @@ class HomeAdmin extends StatelessWidget {
 
             ContainerData(
               text1: 'الاسم ',
-              text2: 'خالد محمد',
+              text2: 'admin',
             ),
             ContainerData(
               text1: 'البريد الالكتروني',
-              text2: 'KhalidOmar@hotmail.com',
+              text2: 'admin@hotmail.com',
             ),
 
             Text(

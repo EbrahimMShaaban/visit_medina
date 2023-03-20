@@ -114,27 +114,15 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
           SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ButtonTemplate(
-                color: AppColors.primarycolor,
-                text1: "رد",
-                onPressed: () {
-                  commentReply(context,controller);
+          ButtonTemplate(
+            color: AppColors.primarycolor,
+            text1: "رد",
+            onPressed: () {
+              commentReply(context,controller);
 
-                },
-                minheight: 50,
-                minwidth: MediaQuery.of(context).size.width / 3,
-              ),
-              ButtonTemplate(
-                color: Colors.red,
-                text1: "حزف",
-                onPressed: () {},
-                minheight: 50,
-                minwidth: MediaQuery.of(context).size.width / 3,
-              )
-            ],
+            },
+            minheight: 50,
+            minwidth: MediaQuery.of(context).size.width / 3,
           )
         ],
       ),
