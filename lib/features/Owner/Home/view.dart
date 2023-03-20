@@ -68,7 +68,7 @@ class HomeOwner extends StatelessWidget {
             ),  ButtonTemplate(
                 color: AppColors.greenlight,
                 colortext: AppColors.green,
-                text1: "قيد المعالجة",
+                text1: "الطلبات",
                 onPressed: () {
                   navigateTo(
                       context,

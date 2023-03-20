@@ -26,7 +26,7 @@ class _ActivitiesState extends State<Activities> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.titleAppBar,
-             ),
+          ),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -49,7 +49,7 @@ class _ActivitiesState extends State<Activities> {
                         Text(
                           'قم باخيتار صورة للموقع',
                           style: AppTextStyles.w800.copyWith(
-                            color: AppColors.primarycolor,fontSize: 25
+                              color: AppColors.primarycolor,fontSize: 25
                           ),
                         ),
                         Icon(Icons.camera_alt_outlined,
@@ -62,7 +62,7 @@ class _ActivitiesState extends State<Activities> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Expanded(flex: 1, child: Text('اسم الموقع',
+                    Expanded(flex: 1, child: Text('العنوان:',
                       style: AppTextStyles.w800.copyWith(
                           color: AppColors.primarycolor,fontSize: 15
                       ),)),
@@ -84,15 +84,15 @@ class _ActivitiesState extends State<Activities> {
                                 enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(40))),
+                                    BorderRadius.all(Radius.circular(40))),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(40))),
+                                    BorderRadius.all(Radius.circular(40))),
                                 errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(40))),
+                                    BorderRadius.all(Radius.circular(40))),
                                 disabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.all(
@@ -104,7 +104,7 @@ class _ActivitiesState extends State<Activities> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(flex: 1, child: Text('شرح الموقع :',style: AppTextStyles.w800.copyWith(
+                    Expanded(flex: 1, child: Text('الوصف:',style: AppTextStyles.w800.copyWith(
                         color: AppColors.primarycolor,fontSize: 15
                     ))),
                     Expanded(
@@ -126,15 +126,230 @@ class _ActivitiesState extends State<Activities> {
                                 enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(40))),
+                                    BorderRadius.all(Radius.circular(40))),
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(40))),
+                                    BorderRadius.all(Radius.circular(40))),
                                 errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(40))),
+                                    BorderRadius.all(Radius.circular(40))),
+                                disabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(40))))),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(flex: 1, child: Text('رقم الجوال:',
+                      style: AppTextStyles.w800.copyWith(
+                          color: AppColors.primarycolor,fontSize: 15
+                      ),)),
+                    Expanded(
+                      flex: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10),
+                        child: TextFormField(
+                            cursorColor: AppColors.blue,
+                            controller: controller,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                filled: true,
+                                fillColor: AppColors.greenlight,
+
+                                // labelStyle: AppTextStyles.hittext,
+                                // hintStyle: AppTextStyles.hittext,
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                disabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(40))))),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(flex: 1, child: Text('السعر:',
+                      style: AppTextStyles.w800.copyWith(
+                          color: AppColors.primarycolor,fontSize: 15
+                      ),)),
+                    Expanded(
+                      flex: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10),
+                        child: TextFormField(
+                            cursorColor: AppColors.blue,
+                            controller: controller,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                filled: true,
+                                fillColor: AppColors.greenlight,
+
+                                // labelStyle: AppTextStyles.hittext,
+                                // hintStyle: AppTextStyles.hittext,
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                disabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(40))))),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(flex: 1, child: Text('الوقت:',
+                      style: AppTextStyles.w800.copyWith(
+                          color: AppColors.primarycolor,fontSize: 15
+                      ),)),
+                    Expanded(
+                      flex: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10),
+                        child: TextFormField(
+                            cursorColor: AppColors.blue,
+                            controller: controller,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                filled: true,
+                                fillColor: AppColors.greenlight,
+
+                                // labelStyle: AppTextStyles.hittext,
+                                // hintStyle: AppTextStyles.hittext,
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                disabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(40))))),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(flex: 1, child: Text('التاريخ:',
+                      style: AppTextStyles.w800.copyWith(
+                          color: AppColors.primarycolor,fontSize: 15
+                      ),)),
+                    Expanded(
+                      flex: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10),
+                        child: TextFormField(
+                            cursorColor: AppColors.blue,
+                            controller: controller,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                filled: true,
+                                fillColor: AppColors.greenlight,
+
+                                // labelStyle: AppTextStyles.hittext,
+                                // hintStyle: AppTextStyles.hittext,
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                disabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(40))))),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(flex: 1, child: Text('الموقع:',
+                      style: AppTextStyles.w800.copyWith(
+                          color: AppColors.primarycolor,fontSize: 15
+                      ),)),
+                    Expanded(
+                      flex: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10),
+                        child: TextFormField(
+                            cursorColor: AppColors.blue,
+                            controller: controller,
+                            decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                filled: true,
+                                fillColor: AppColors.greenlight,
+
+                                // labelStyle: AppTextStyles.hittext,
+                                // hintStyle: AppTextStyles.hittext,
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
+                                errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(40))),
                                 disabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.all(
@@ -157,7 +372,7 @@ class _ActivitiesState extends State<Activities> {
                             });
                           },
                         ),
-                         Text('المطاعم',style: AppTextStyles.w800.copyWith(
+                        Text('المطاعم',style: AppTextStyles.w800.copyWith(
                             color: AppColors.primarycolor,fontSize: 15
                         )),
                       ],
@@ -173,7 +388,7 @@ class _ActivitiesState extends State<Activities> {
                             });
                           },
                         ),
-                         Text('المقاهي',style: AppTextStyles.w800.copyWith(
+                        Text('المقاهي',style: AppTextStyles.w800.copyWith(
                             color: AppColors.primarycolor,fontSize: 15
                         )),
                       ],
@@ -189,34 +404,34 @@ class _ActivitiesState extends State<Activities> {
                             });
                           },
                         ),
-                         Text('الأنشطة',style: AppTextStyles.w800.copyWith(
+                        Text('الأنشطة',style: AppTextStyles.w800.copyWith(
                             color: AppColors.primarycolor,fontSize: 15
                         )),
                       ],
                     ),
                   ],
                 ),
-                Container(
-                    height: 150,
-                    //  margin: EdgeInsets.symmetric(horizontal: 20),
-                    width: MediaQuery.of(context).size.width,
-                    // decoration: BoxDecoration(
-                    //     color: AppColors.greenlight,
-                    //     borderRadius: BorderRadius.circular(15)),
-                    child: Image.asset(AppImages.location)),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 15),
-                  height: 60,
-                  child: Expanded(
-                    child: ButtonTemplate(
-                        color: AppColors.green,
 
-                        //  fontSize: 10,
-                        text1: 'حفظ',
-                        onPressed: () {
-                          navigateTo(context, ActivitySuccses(title: widget.titleAppBar,));
-                        }),
-                  ),
+
+                // Container(
+                //     height: 150,
+                //     //  margin: EdgeInsets.symmetric(horizontal: 20),
+                //     width: MediaQuery.of(context).size.width,
+                //     // decoration: BoxDecoration(
+                //     //     color: AppColors.greenlight,
+                //     //     borderRadius: BorderRadius.circular(15)),
+                //     child: Image.asset(AppImages.location)),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 20),
+                  height: 60,
+                  child: ButtonTemplate(
+                      color: AppColors.green,
+
+                      //  fontSize: 10,
+                      text1: 'إرسال الطلب',
+                      onPressed: () {
+                        navigateTo(context, ActivitySuccses(title: widget.titleAppBar,));
+                      }),
                 )
               ],
             ),

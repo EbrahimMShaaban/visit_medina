@@ -273,7 +273,7 @@ Future commentReply(
             width: 100,
             child: SingleChildScrollView(
               child: TextFieldTemplate(
-                hintText: 'رد علي الشكوي',
+                hintText: 'رد علي التعليق',
                 icon: null, controller: controller,
 
               ),

@@ -78,7 +78,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "احمد بهجت الباز",
+                      "admin",
                       style: AppTextStyles.bold.copyWith(
                           color: AppColors.primarycolor, fontSize: 22),
                     ),
@@ -87,7 +87,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: "أسم الموقع :",
+                        text: "العنوان:",
                         style: AppTextStyles.bold.copyWith(
                             color: AppColors.primarycolor, fontSize: 19),
                         // style: AppTextStyles.w300.apply(
@@ -105,7 +105,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: "نوع الحدث :",
+                        text: "النوع:",
                         style: AppTextStyles.bold.copyWith(
                             color: AppColors.primarycolor, fontSize: 19),
                         // style: AppTextStyles.w300.apply(
@@ -130,28 +130,56 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
             height: 10,
           ),
           Divider(height: 20, color: Colors.black),
-          RichText(
-            text: TextSpan(
-              text: "شرح الموقع :",
-              style: AppTextStyles.bold
-                  .copyWith(color: AppColors.primarycolor, fontSize: 19),
-              // style: AppTextStyles.w300.apply(
-              //   color: Colors.black,
-              // ),
-              children: <TextSpan>[
-                TextSpan(
-                  text:
-                      "يقع هذا الفندق على بعد 3 دقائق سيراً على الأقدام من المسجد النبوي الشريف، ويضم غرفاً مزودة بتلفزيون مع قنوات فضائية",
 
-                  style: AppTextStyles.bold.copyWith(
-                    color: AppColors.greyDark,
-                    fontSize: 16,
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              RichText(
+                text: TextSpan(
+                  text: "الرقم: ",
+                  style: AppTextStyles.bold
+                      .copyWith(color: AppColors.primarycolor, fontSize: 19),
+                  // style: AppTextStyles.w300.apply(
+                  //   color: Colors.black,
+                  // ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text:
+"050100100100",
+                      style: AppTextStyles.bold.copyWith(
+                        color: AppColors.greyDark,
+                        fontSize: 16,
+                      ),
 
-                  //  style: AppTextStyles.lrTitles
+                      //  style: AppTextStyles.lrTitles
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              RichText(
+                text: TextSpan(
+                  text: "السعر: ",
+                  style: AppTextStyles.bold
+                      .copyWith(color: AppColors.primarycolor, fontSize: 19),
+                  // style: AppTextStyles.w300.apply(
+                  //   color: Colors.black,
+                  // ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text:
+'100 رس',
+                      style: AppTextStyles.bold.copyWith(
+                        color: AppColors.greyDark,
+                        fontSize: 16,
+                      ),
+
+                      //  style: AppTextStyles.lrTitles
+                    ),
+                  ],
+                ),
+              ),
+            ],
+
           ),
           SizedBox(
             height: 10,

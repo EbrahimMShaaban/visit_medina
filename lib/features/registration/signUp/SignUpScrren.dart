@@ -25,26 +25,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       textDirection: TextDirection.rtl,
       child: Column(
         children: [
-          Row(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
-                child: TextFieldTemplate(
-                  hintText: "الاسم الأول",
+         TextFieldTemplate(
+                  hintText: "الاسم ",
                   controller: controller,
                   icon: Icon(Icons.person),
                 ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
-                child: TextFieldTemplate(
-                  hintText: "الاسم الثانى",
-                  controller: controller,
-                  icon: Icon(Icons.person),
-                ),
-              ),
-            ],
-          ),
+
+
           TextFieldTemplate(
             hintText: "البريد الالكتروني",
             controller: controller,
