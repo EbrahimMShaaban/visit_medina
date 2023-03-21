@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:visit_medina/shared/styles/styles.dart';
 
 import 'colors.dart';
 
 ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: Color(0xffF5F5F5),
+    scaffoldBackgroundColor: Colors.white,
     platform: TargetPlatform.iOS,
     fontFamily: 'Schyler',
-    primaryColor: AppColors.primarycolor,
+    primaryColor: AppColors.green,
     primarySwatch: Colors.green,
     iconTheme: IconThemeData(color: AppColors.primarycolor),
     buttonTheme: ButtonThemeData(
@@ -16,29 +17,26 @@ ThemeData lightTheme = ThemeData(
     ),
     textTheme: TextTheme(
       headline1: TextStyle(
-        color: AppColors.blueDark,
+        color: AppColors.green,
       ),
       headline2: TextStyle(
-        color: AppColors.blueDark,
+        color: AppColors.green,
       ),
       bodyText2: TextStyle(
-        color: AppColors.blueDark,
+        color: AppColors.green,
       ),
       subtitle1: TextStyle(
-        color: AppColors.blueDark,
+        color: AppColors.green,
       ),
     ),
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
         backgroundColor: AppColors.white,
         toolbarHeight: 60,
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: AppColors.primarycolor, size: 25),
         titleTextStyle: TextStyle(
-          color: AppColors.primarycolor,
-          fontSize: 32,
-          fontWeight: FontWeight.w500,
-        ),
+            fontSize: 25, color: AppColors.primarycolor, fontWeight:FontWeight.bold),
         systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: AppColors.primarycolor,
             statusBarIconBrightness: Brightness.light)),
