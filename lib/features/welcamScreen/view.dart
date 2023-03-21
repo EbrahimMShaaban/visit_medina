@@ -108,7 +108,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                     style: AppTextStyles.w800.copyWith(
                                         fontWeight: FontWeight.bold,
                                         color: AppColors.green,
-                                        fontSize: 16)),
+                                        fontSize: 18)),
                               ),
                         SmoothPageIndicator(
                           controller: boardController,
@@ -167,12 +167,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               children: [
                 Text(
                   'VisitMedina',
-                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 22.0),
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 25.0),
                 ),
                 Text(
                   '${model.body}',
                   style: TextStyle(
-                      fontWeight: FontWeight.w700,
+                    height: 2,
+                      fontWeight: FontWeight.w100,
                       fontSize: 15.0,
                       color: AppColors.black),
                 ),

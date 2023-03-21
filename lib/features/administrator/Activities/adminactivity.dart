@@ -428,7 +428,7 @@ class _ActivitiesState extends State<Activities> {
                       color: AppColors.green,
 
                       //  fontSize: 10,
-                      text1: 'إرسال الطلب',
+                      text1: 'اضافة',
                       onPressed: () {
                         navigateTo(context, ActivitySuccses(title: widget.titleAppBar,));
                       }),

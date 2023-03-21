@@ -74,7 +74,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "احمد بهجت الباز",
+                    "Ahmed ",
                     style: AppTextStyles.bold
                         .copyWith(color: AppColors.primarycolor, fontSize: 22),
                   ),
