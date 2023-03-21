@@ -37,9 +37,9 @@ class ProfilOwner extends StatelessWidget {
 
                 ContainerData(
                   text1: 'الاسم ',
-                  text2: 'خالد محمد', controller: controller, hintText: 'sssss',
+                  text2: 'خالد محمد', controller: controller, hintText: 'الاسم',
                 ),
-                ContainerData( controller: controller, hintText: 'sssss',
+                ContainerData( controller: controller, hintText: 'البريد الالكتروني',
                   text1: 'البريد الالكتروني',
                   text2: 'KhalidOmar@hotmail.com',
                 ),
