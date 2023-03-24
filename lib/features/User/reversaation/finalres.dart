@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visit_medina/features/User/reversaation/payment.dart';
+import 'package:visit_medina/features/User/reversaation/payment_card.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
@@ -119,7 +120,7 @@ class FinalReserv extends StatelessWidget {
                 color: AppColors.green,
                 text1: 'إتمام الحجز',
                 onPressed: () {
-                  navigateTo(context, Payment());
+                  navigateTo(context, PaymentContainer());
                 })
           ],
         ),

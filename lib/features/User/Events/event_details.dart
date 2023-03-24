@@ -8,6 +8,9 @@ import 'package:visit_medina/shared/styles/images.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
 import '../reversaation/view.dart';
+import 'map.dart';
+
+
 
 class EventDetails extends StatelessWidget {
   const EventDetails({Key? key}) : super(key: key);
@@ -42,7 +45,10 @@ class EventDetails extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ButtonTemplate(
-                  color: AppColors.green, text1: 'التفاصيل', onPressed: () {}),
+                  color: AppColors.green, text1: 'التفاصيل', onPressed: () {
+
+                    // navigateTo(context, MapScreen());
+              }),
             ),
             Spacer(),
             Row(
