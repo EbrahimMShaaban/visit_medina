@@ -7,6 +7,8 @@ import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/images.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
+import '../reversaation/view.dart';
+
 class EventDetails extends StatelessWidget {
   const EventDetails({Key? key}) : super(key: key);
 
@@ -16,12 +18,12 @@ class EventDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'سكة حديد الحجاز',
-          style: AppTextStyles.bold
-              .copyWith(color: AppColors.green, fontSize: 24),
+          style:
+              AppTextStyles.bold.copyWith(color: AppColors.green, fontSize: 24),
         ),
       ),
       body: Container(
-     //   padding: EdgeInsets.symmetric(vertical: 20),
+        //   padding: EdgeInsets.symmetric(vertical: 20),
         width: MediaQueryHelper.sizeFromWidth(context, 1),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +49,8 @@ class EventDetails extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ButtonTemplate(
-                    color: AppColors.green,minwidth: 50,
+                    color: AppColors.green,
+                    minwidth: 50,
                     text1: 'شاركنا رأيك',
                     onPressed: () {
                       navigateTo(context, RatingView());
@@ -56,7 +59,9 @@ class EventDetails extends StatelessWidget {
                     color: AppColors.green,
                     minwidth: 50,
                     text1: 'احجز الأن',
-                    onPressed: () {}),
+                    onPressed: () {
+                      navigateTo(context, ReversationView());
+                    }),
               ],
             )
           ],
