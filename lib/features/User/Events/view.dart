@@ -10,7 +10,7 @@ class ActivityView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Text('عرض الفعاليات والأنشطة'),
+        // title:const Text('عرض الفعاليات والأنشطة'),
         actions: [
           Directionality(
               textDirection: TextDirection.ltr,

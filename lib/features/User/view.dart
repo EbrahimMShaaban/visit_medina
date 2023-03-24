@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
+import 'package:visit_medina/features/User/favourit/view.dart';
 import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
 import '../../../shared/styles/images.dart';
+import '../registration/regist_screen/view.dart';
 import 'Events/view.dart';
 import 'Profile/view.dart';
 
@@ -17,36 +18,76 @@ class VisitorView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Directionality(
-              textDirection: TextDirection.ltr,
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: AppColors.green,
-                  )))
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: IconButton(
+                onPressed: () {
+                  navigateTo(context, ProfilUser());
+                },
+                icon: Icon(Icons.person)),
+          ),
         ],
         leading: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          child: IconButton(onPressed: () {
-            navigateTo(context, ProfilUser());
-          }, icon: Icon(Icons.person)),
+          child: IconButton(
+              onPressed: () {
+                showMyDialog(
+                    message: "تسجيل الخروج",
+                    context: context,
+                    ontap: () {
+                      navigateAndFinished(context, RegistScreen());
+                    });
+              },
+              icon: Icon(
+                Icons.output_sharp,
+                color: Colors.red,
+              )),
         ),
       ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            InkWell(
-              onTap: (){
-                navigateTo(context, ActivityView());
-              },
-              child: Container(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                onTap: () {
+                  navigateTo(context, ActivityView());
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 20),
+                  height: 100,
+                  width: 220,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: AppColors.green),
+                  child: Center(
+                      child: Text(" الفعاليات والأنشطة",
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  navigateTo(context, ActivityView());
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 20),
+                  height: 100,
+                  width: 220,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: AppColors.green),
+                  child: Center(
+                      child: Text(" الاماكن السياحية",
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                ),
+              ),
+              Container(
                 margin: EdgeInsets.only(top: 10, bottom: 20),
                 height: 100,
                 width: 220,
@@ -54,43 +95,30 @@ class VisitorView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: AppColors.green),
                 child: Center(
-                    child: Text("عرض الفعاليات والأنشطة",
+                    child: Text("الحجوزات",
                         style: AppTextStyles.bold.copyWith(fontSize: 20))),
               ),
-            ), Container(
-              margin: EdgeInsets.only(top: 10, bottom: 20),
-              height: 100,
-              width: 220,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: AppColors.green),
-              child: Center(
-                  child: Text("الحجوزات",
-                      style: AppTextStyles.bold.copyWith(fontSize: 20))),
-            ), Container(
-              margin: EdgeInsets.only(top: 10, bottom: 20),
-              height: 100,
-              width: 220,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: AppColors.green),
-              child: Center(
-                  child: Text("المفضلة",
-                      style: AppTextStyles.bold.copyWith(fontSize: 20))),
-            ),
-
-            Expanded(
-              child: SizedBox(),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: ButtonTemplate(
-                  color: AppColors.green,
-                  text1: "تسجيل الخروج",
-                  icon: Icons.output_sharp,
-                  onPressed: () {}),
-            )
-          ],
+              InkWell(
+                onTap: () {
+                  navigateTo(context, FavouriteScreen());
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 20),
+                  height: 100,
+                  width: 220,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: AppColors.green),
+                  child: Center(
+                      child: Text("المفضلة",
+                          style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                ),
+              ),
+              Expanded(
+                child: SizedBox(),
+              ),
+            ],
+          ),
         ),
       )),
     );
