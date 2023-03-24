@@ -78,6 +78,7 @@ class TextFieldTemplate extends StatefulWidget {
     this.validator,
     this.isPassword = false,
     this.icon,
+    this.lines = 1
   }) : super(key: key);
 
   String hintText;
@@ -85,6 +86,7 @@ class TextFieldTemplate extends StatefulWidget {
   Function? validator;
   Widget? icon;
   bool isPassword;
+  int lines;
 
   @override
   State<TextFieldTemplate> createState() => _TextFieldTemplateState();
@@ -98,6 +100,7 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
       child: TextFormField(
+        maxLines: widget.lines,
           cursorColor: AppColors.blue,
           obscureText: widget.isPassword ? _isObscure : false,
           controller: widget.controller,

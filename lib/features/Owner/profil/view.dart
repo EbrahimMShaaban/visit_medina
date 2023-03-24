@@ -13,8 +13,7 @@ import '../../registration/regist_screen/view.dart';
 
 class ProfilOwner extends StatelessWidget {
    ProfilOwner({Key? key}) : super(key: key);
-  @override
-  TextEditingController controller =TextEditingController();
+  final TextEditingController controller =TextEditingController();
 
   Widget build(BuildContext context) {
 

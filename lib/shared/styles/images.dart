@@ -11,5 +11,8 @@ class AppImages {
   static const String location = 'assets/images/location.png';
   static const String done = 'assets/images/done.png';
   static const String person = 'assets/images/person.png';
+  static const String place = 'assets/images/place.png';
+  static const String sekka = 'assets/images/sekka.png';
+  static const String rating = 'assets/images/rating.png';
 
 }

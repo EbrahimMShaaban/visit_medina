@@ -58,12 +58,11 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(flex:1,child
-
-                : CircleAvatar(
+              Expanded(
+                flex: 1,
+                child: CircleAvatar(
                   radius: 30.0,
                   backgroundImage: AssetImage(AppImages.person),
                   backgroundColor: Colors.transparent,
@@ -130,7 +129,6 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
             height: 10,
           ),
           Divider(height: 20, color: Colors.black),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -144,8 +142,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                   // ),
                   children: <TextSpan>[
                     TextSpan(
-                      text:
-"050100100100",
+                      text: "050100100100",
                       style: AppTextStyles.bold.copyWith(
                         color: AppColors.greyDark,
                         fontSize: 16,
@@ -166,8 +163,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                   // ),
                   children: <TextSpan>[
                     TextSpan(
-                      text:
-'100 رس',
+                      text: '100 رس',
                       style: AppTextStyles.bold.copyWith(
                         color: AppColors.greyDark,
                         fontSize: 16,
@@ -179,7 +175,6 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                 ),
               ),
             ],
-
           ),
           SizedBox(
             height: 10,
