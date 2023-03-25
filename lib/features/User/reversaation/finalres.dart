@@ -16,6 +16,22 @@ class FinalReserv extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Directionality(
+              textDirection: TextDirection.ltr,
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: AppColors.green,
+                  )))
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          //  child: Image.asset(AppImages.drawer, height: 30),
+        ),
         title: Text('إكمال الحجز'),
       ),
       body: Padding(

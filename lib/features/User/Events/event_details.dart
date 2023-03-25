@@ -24,50 +24,69 @@ class EventDetails extends StatelessWidget {
           style:
               AppTextStyles.bold.copyWith(color: AppColors.green, fontSize: 24),
         ),
-      ),
-      body: ListView(
-       //   crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Text(
-          //   'سكة حديد الحجاز',
-          //   style: AppTextStyles.bold
-          //       .copyWith(color: AppColors.green, fontSize: 24),
-          // ),
-          Image.asset(
-            AppImages.sekka,
-            width: MediaQueryHelper.sizeFromWidth(context, 1),
-          ),
-          Text(
-              'توجه إلى متحف سمة الحجاز، الذي يقع في المحطة ذات الطراز المعماري الإدواردي، حيث فتح المتحف أبوابه لجميع الزائرين من كل مكان من أجل الاستمتاع بكل ما يحتويه من مقتنيات وآثار تاريخية وإسلامية، بالاضافة الى مساحات واسعة للاستمتاع بالمكان.'),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ButtonTemplate(
-                color: AppColors.green, text1: 'التفاصيل', onPressed: () {
-
-                  // navigateTo(context, MapScreen());
-            }),
-          ),
-          Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ButtonTemplate(
-                  color: AppColors.green,
-                  minwidth: 50,
-                  text1: 'شاركنا رأيك',
+        actions: [
+          Directionality(
+              textDirection: TextDirection.ltr,
+              child: IconButton(
                   onPressed: () {
-                    navigateTo(context, RatingView());
-                  }),
-              ButtonTemplate(
-                  color: AppColors.green,
-                  minwidth: 50,
-                  text1: 'احجز الأن',
-                  onPressed: () {
-                    navigateTo(context, ReversationView());
-                  }),
-            ],
-          )
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: AppColors.green,
+                  )))
         ],
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          //  child: Image.asset(AppImages.drawer, height: 30),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+        child: ListView(
+         //   crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Text(
+            //   'سكة حديد الحجاز',
+            //   style: AppTextStyles.bold
+            //       .copyWith(color: AppColors.green, fontSize: 24),
+            // ),
+            Image.asset(
+              AppImages.sekka,
+              width: MediaQueryHelper.sizeFromWidth(context, 1),
+            ),
+            Text(
+                'توجه إلى متحف سمة الحجاز، الذي يقع في المحطة ذات الطراز المعماري الإدواردي، حيث فتح المتحف أبوابه لجميع الزائرين من كل مكان من أجل الاستمتاع بكل ما يحتويه من مقتنيات وآثار تاريخية وإسلامية، بالاضافة الى مساحات واسعة للاستمتاع بالمكان.'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ButtonTemplate(
+                  color: AppColors.green, text1: 'التفاصيل', onPressed: () {
+
+                    // navigateTo(context, MapScreen());
+              }),
+            ),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ButtonTemplate(
+                    color: AppColors.green,
+                    minwidth: 50,
+                    text1: 'شاركنا رأيك',
+                    onPressed: () {
+                      navigateTo(context, RatingView());
+                    }),
+                ButtonTemplate(
+                    color: AppColors.green,
+                    minwidth: 50,
+                    text1: 'احجز الأن',
+                    onPressed: () {
+                      navigateTo(context, ReversationView());
+                    }),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

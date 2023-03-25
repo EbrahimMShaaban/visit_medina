@@ -14,7 +14,25 @@ class PaymentContainer extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+
+        appBar: AppBar(
+          actions: [
+            Directionality(
+                textDirection: TextDirection.ltr,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: AppColors.green,
+                    )))
+          ],
+          leading: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            //  child: Image.asset(AppImages.drawer, height: 30),
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
@@ -27,7 +45,7 @@ class PaymentContainer extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     color: AppColors.green),
                 child: Center(
-                  child: Text('pay with Credit/Debit Card',
+                  child: Text('أضف بطاقة دفع',
                       style:
                           AppTextStyles.w800.copyWith(color: AppColors.white)),
                 ),
