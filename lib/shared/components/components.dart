@@ -136,7 +136,8 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
                   borderRadius: BorderRadius.all(Radius.circular(15))),
               disabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(15))))),
+                  borderRadius: BorderRadius.all(Radius.circular(15)))
+          )),
     );
   }
 }

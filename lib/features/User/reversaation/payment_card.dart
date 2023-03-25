@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:visit_medina/features/User/Events/payment%20success.dart';
+import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 
 import '../../../shared/components/components.dart';
@@ -16,7 +18,9 @@ class PaymentContainer extends StatelessWidget {
     return Scaffold(
 
         appBar: AppBar(
+          title: Text("أضف بطاقة دفع"),
           actions: [
+            
             Directionality(
                 textDirection: TextDirection.ltr,
                 child: IconButton(
@@ -37,19 +41,6 @@ class PaymentContainer extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                padding: EdgeInsets.all(5),
-                height: 70,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: AppColors.green),
-                child: Center(
-                  child: Text('أضف بطاقة دفع',
-                      style:
-                          AppTextStyles.w800.copyWith(color: AppColors.white)),
-                ),
-              ),
               SizedBox(
                 height: 30,
               ),
@@ -120,7 +111,9 @@ class PaymentContainer extends StatelessWidget {
                 height: 70,
               ),
               ButtonTemplate(
-                  color: AppColors.green, text1: 'دفع', onPressed: () {})
+                  color: AppColors.green, text1: 'دفع', onPressed: () {
+                    navigateAndFinished(context, PaymentSuccess());
+              })
             ],
           ),
         ));

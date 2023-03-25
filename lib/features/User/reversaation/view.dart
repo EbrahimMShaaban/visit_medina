@@ -17,7 +17,8 @@ class ReversationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(  actions: [
+      appBar: AppBar(
+        actions: [
         Directionality(
             textDirection: TextDirection.ltr,
             child: IconButton(
