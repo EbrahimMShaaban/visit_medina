@@ -56,12 +56,17 @@ class _BookingItemState extends State<BookingItem> {
                           TextSpan(
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.primarycolor, fontSize: 22),
-                            text: "احمد بهجت \n",
+                            text: "test test \n",
                           ),
                           TextSpan(
                               style: AppTextStyles.w600.copyWith(
                                   color: AppColors.greenlight, fontSize: 15),
-                              text: "ahmed@gmail.com"),
+                              text: "ahmed@gmail.com\n"),
+
+                          TextSpan(
+                              style: AppTextStyles.w600.copyWith(
+                                  color: AppColors.green, fontSize: 20),
+                              text: "سكة حديد الحجاز"),
                         ]),
                   ),
                   SizedBox(

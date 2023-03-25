@@ -6,6 +6,7 @@ import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
 import '../../../shared/styles/images.dart';
+import '../Owner/Home/bookings.dart';
 import '../registration/regist_screen/view.dart';
 import 'Events/view.dart';
 import 'Profile/view.dart';
@@ -87,16 +88,21 @@ class VisitorView extends StatelessWidget {
                           style: AppTextStyles.bold.copyWith(fontSize: 20))),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 10, bottom: 20),
-                height: 100,
-                width: 220,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: AppColors.green),
-                child: Center(
-                    child: Text("الحجوزات",
-                        style: AppTextStyles.bold.copyWith(fontSize: 20))),
+              InkWell(
+                onTap: (){
+                  navigateTo(context, BookingScreen());
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 20),
+                  height: 100,
+                  width: 220,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: AppColors.green),
+                  child: Center(
+                      child: Text("الحجوزات",
+                          style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                ),
               ),
               InkWell(
                 onTap: () {
