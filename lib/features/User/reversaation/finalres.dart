@@ -46,7 +46,7 @@ class FinalReserv extends StatelessWidget {
                 fit: BoxFit.fitWidth,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 margin: EdgeInsets.symmetric(vertical: 10),
                 height: 80,
                 decoration: BoxDecoration(

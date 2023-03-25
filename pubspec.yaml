@@ -36,7 +36,7 @@ dependencies:
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
   dio:
-  horizontalcalender: ^0.0.4
+  horizontal_calendar: ^1.0.2
 
 
 
@@ -48,6 +48,7 @@ dependencies:
   google_maps_flutter: ^2.2.5
   geolocator: ^9.0.2
   flutter_google_places: ^0.3.0
+  flutter_time_picker_spinner: ^2.0.0
   flutter_rating_bar:
 
 dev_dependencies:
