@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:visit_medina/features/User/Events/payment%20success.dart';
+import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 
 import '../../../shared/components/components.dart';
@@ -14,24 +16,31 @@ class PaymentContainer extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+
+        appBar: AppBar(
+          title: Text("أضف بطاقة دفع"),
+          actions: [
+            
+            Directionality(
+                textDirection: TextDirection.ltr,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: AppColors.green,
+                    )))
+          ],
+          leading: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            //  child: Image.asset(AppImages.drawer, height: 30),
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                padding: EdgeInsets.all(5),
-                height: 70,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: AppColors.green),
-                child: Center(
-                  child: Text('pay with Credit/Debit Card',
-                      style:
-                          AppTextStyles.w800.copyWith(color: AppColors.white)),
-                ),
-              ),
               SizedBox(
                 height: 30,
               ),
@@ -102,7 +111,9 @@ class PaymentContainer extends StatelessWidget {
                 height: 70,
               ),
               ButtonTemplate(
-                  color: AppColors.green, text1: 'دفع', onPressed: () {})
+                  color: AppColors.green, text1: 'دفع', onPressed: () {
+                    navigateAndFinished(context, PaymentSuccess());
+              })
             ],
           ),
         ));

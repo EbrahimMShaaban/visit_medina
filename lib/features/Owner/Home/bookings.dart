@@ -23,7 +23,7 @@ class _BookingScreenState extends State<BookingScreen> {
       ),
       body: SafeArea(
           child: ListView.builder(
-            itemCount: 2,
+            itemCount: 1,
             itemBuilder: (context, index) {
               return BookingItem();
             },

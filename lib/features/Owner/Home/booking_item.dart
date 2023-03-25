@@ -33,53 +33,11 @@ class _BookingItemState extends State<BookingItem> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                radius: 30.0,
-                backgroundImage: AssetImage(AppImages.person),
-                backgroundColor: Colors.transparent,
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RichText(
-                    text: TextSpan(
-                        //  style: AppTextStyles.analysis_titles,
-                        //    text: "+12%",
-                        children: [
-                          TextSpan(
-                            style: AppTextStyles.bold.copyWith(
-                                color: AppColors.primarycolor, fontSize: 22),
-                            text: "test test \n",
-                          ),
-                          TextSpan(
-                              style: AppTextStyles.w600.copyWith(
-                                  color: AppColors.greenlight, fontSize: 15),
-                              text: "ahmed@gmail.com\n"),
-
-                          TextSpan(
-                              style: AppTextStyles.w600.copyWith(
-                                  color: AppColors.green, fontSize: 20),
-                              text: "سكة حديد الحجاز"),
-                        ]),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
-            ],
-          ),
+     Text("فندق المد ينة المنورة", style: AppTextStyles.bold
+          .copyWith(color: AppColors.green, fontSize: 19)),
           SizedBox(
             height: 10,
           ),
-          Divider(height: 20, color: Colors.black),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -151,9 +109,9 @@ class _BookingItemState extends State<BookingItem> {
               ),
             ],
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 10,),
+
+          Divider(height: 20, color: Colors.black),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

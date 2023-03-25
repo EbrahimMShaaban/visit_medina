@@ -6,10 +6,17 @@ import 'package:visit_medina/shared/styles/styles.dart';
 
 import 'event_details.dart';
 
-class ActivityItem extends StatelessWidget {
-  const ActivityItem({Key? key}) : super(key: key);
+class ActivityItem extends StatefulWidget {
+  ActivityItem({Key? key}) : super(key: key);
 
   @override
+  State<ActivityItem> createState() => _ActivityItemState();
+}
+
+class _ActivityItemState extends State<ActivityItem> {
+  @override
+  bool favorite = false;
+
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -17,40 +24,49 @@ class ActivityItem extends StatelessWidget {
         onTap: () {
           navigateTo(context, const EventDetails());
         },
-        child:  Container(
-          height: 200,
+        child: Container(
+          height: 130,
           padding: EdgeInsets.all(10),
-          margin:  EdgeInsets.symmetric(vertical: 10),
+          margin: EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
               color: AppColors.greenlight,
               borderRadius: BorderRadius.circular(15)),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+// mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(
-                            AppImages.sekka,
-                          )),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Image.asset(
-                    AppImages.sekka,
-                    // width: 140,
-                  )),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text('سكة حد يد الحجاز',
-                      style: AppTextStyles.bold
-                          .copyWith(color: AppColors.green, fontSize: 22)),
-                  Icon(
-                    Icons.favorite_outline,
+                height: 110,
+                width: 110,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(
+                      AppImages.sekka,
+                    )),
+                    borderRadius: BorderRadius.circular(20)),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Text('سكة حد يد الحجاز',
+                  style: AppTextStyles.bold
+                      .copyWith(color: AppColors.green, fontSize: 22)),
+              Spacer(),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    favorite = !favorite;
+                  });
+                },
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Icon(
+                    favorite ? Icons.favorite_outlined :
+                    Icons.favorite_border,
                     size: 35,
-                  )
-                ],
-              )
+                  ),
+                ),
+              ),
             ],
           ),
         ),
