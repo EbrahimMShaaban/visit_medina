@@ -25,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Column(
+      child: ListView(
         children: [
           TextFieldTemplate(
             hintText: "الاسم ",

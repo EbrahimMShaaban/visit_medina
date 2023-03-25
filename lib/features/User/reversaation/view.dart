@@ -10,82 +10,105 @@ import 'finalres.dart';
 
 class ReversationView extends StatelessWidget {
    ReversationView({Key? key}) : super(key: key);
-   final TextEditingController controller =TextEditingController();
+   final TextEditingController controller1 =TextEditingController();
+   final TextEditingController controller2 =TextEditingController();
+   final TextEditingController controller3 =TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+        Directionality(
+            textDirection: TextDirection.ltr,
+            child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: AppColors.green,
+                )))
+      ],
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          //  child: Image.asset(AppImages.drawer, height: 30),
+        ),
         title: Text('حجز'),
       ),
-      body: Column(
-        children: [
-          Image.asset(
-            AppImages.sekka,
-            width: MediaQueryHelper.sizeFromWidth(context, 1),
-            height: MediaQueryHelper.sizeFromHeight(context, 3),
-            fit: BoxFit.fitWidth,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+          child: Column(
             children: [
-              Expanded(flex: 1, child: Text('التاريخ :',
-                style: AppTextStyles.w800.copyWith(
-                    color: AppColors.primarycolor,fontSize: 15
-                ),)),
-              Expanded(
-                flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 10),
-                  child:TextFieldTemplate(hintText: '', controller: controller)
-                ),
+              Image.asset(
+                AppImages.sekka,
+                width: MediaQueryHelper.sizeFromWidth(context, 1),
+                height: MediaQueryHelper.sizeFromHeight(context, 3),
+                fit: BoxFit.fitWidth,
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(flex: 1, child: Text('التاريخ :',
+                    style: AppTextStyles.w800.copyWith(
+                        color: AppColors.primarycolor,fontSize: 15
+                    ),)),
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10),
+                      child:TextFieldTemplate(hintText: '', controller: controller1)
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(flex: 1, child: Text('عدد الأفراد:',
+                    style: AppTextStyles.w800.copyWith(
+                        color: AppColors.primarycolor,fontSize: 15
+                    ),)),
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10),
+                      child: TextFieldTemplate(hintText: '', controller: controller2)
+                    ),
+                  ),
+                ],
+              ), Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(flex: 1, child: Text('الوقت :',
+                    style: AppTextStyles.w800.copyWith(
+                        color: AppColors.primarycolor,fontSize: 15
+                    ),)),
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10),
+                      child: TextFieldTemplate(hintText: '', controller: controller3)
+                    ),
+                  ),
+                ],
+              ),
+               ButtonTemplate(color: AppColors.green, text1: 'متابعة الحجز', onPressed: (){
+                 navigateTo(context, FinalReserv());
+
+               })
+
+
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(flex: 1, child: Text('عدد الأفراد:',
-                style: AppTextStyles.w800.copyWith(
-                    color: AppColors.primarycolor,fontSize: 15
-                ),)),
-              Expanded(
-                flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 10),
-                  child: TextFieldTemplate(hintText: '', controller: controller)
-                ),
-              ),
-            ],
-          ), Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(flex: 1, child: Text('الوقت :',
-                style: AppTextStyles.w800.copyWith(
-                    color: AppColors.primarycolor,fontSize: 15
-                ),)),
-              Expanded(
-                flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 10),
-                  child: TextFieldTemplate(hintText: '', controller: controller)
-                ),
-              ),
-            ],
-          ),
-           ButtonTemplate(color: AppColors.green, text1: 'متابعة الحجز', onPressed: (){
-             navigateTo(context, FinalReserv());
-
-           })
-
-
-        ],
+        ),
       ),
     );
   }

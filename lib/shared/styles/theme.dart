@@ -36,7 +36,7 @@ ThemeData lightTheme = ThemeData(
         centerTitle: true,
         iconTheme: IconThemeData(color: AppColors.primarycolor, size: 25),
         titleTextStyle: TextStyle(
-            fontSize: 25, color: AppColors.primarycolor, fontWeight:FontWeight.bold),
+            fontSize: 25, color: AppColors.primarycolor, fontWeight:FontWeight.bold,fontFamily:'Schyler' ),
         systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: AppColors.primarycolor,
             statusBarIconBrightness: Brightness.light)),
