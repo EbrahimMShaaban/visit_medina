@@ -42,7 +42,7 @@ class _RegistScreenState extends State<RegistScreen> {
 
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 1.2,
-                    child: Column(children: [
+                    child: Column(children: const [
                       SizedBox(
                         height: 65,
                         child: (TabBar(
@@ -53,7 +53,7 @@ class _RegistScreenState extends State<RegistScreen> {
                               fontSize: 25,
                               height: 1.5,
                               fontWeight: FontWeight.w800),
-                          tabs: const <Widget>[
+                          tabs: <Widget>[
                             Tab(
                               text: 'تسجيل جديد',
                             ),
@@ -63,7 +63,7 @@ class _RegistScreenState extends State<RegistScreen> {
                           ],
                         )),
                       ),
-                      const Expanded(
+                      Expanded(
                         child: Padding(
                           padding: EdgeInsets.only(top: 20.0),
                           child: SizedBox(

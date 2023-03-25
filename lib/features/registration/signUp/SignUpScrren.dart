@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:visit_medina/features/Owner/Home/view.dart';
+import 'package:visit_medina/features/User/view.dart';
 import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
@@ -18,6 +19,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController controller = TextEditingController();
   Places? _character = Places.user;
+  int type = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +27,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       textDirection: TextDirection.rtl,
       child: Column(
         children: [
-         TextFieldTemplate(
-                  hintText: "الاسم ",
-                  controller: controller,
-                  icon: Icon(Icons.person),
-                ),
-
-
+          TextFieldTemplate(
+            hintText: "الاسم ",
+            controller: controller,
+            icon: Icon(Icons.person),
+          ),
           TextFieldTemplate(
             hintText: "البريد الالكتروني",
             controller: controller,
@@ -41,12 +41,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             hintText: "كلمة المرور",
             controller: controller,
             icon: Icon(Icons.lock),
-          ),  TextFieldTemplate(
+          ),
+          TextFieldTemplate(
             hintText: "تاكيد كلمة المرور",
             controller: controller,
             icon: Icon(Icons.lock),
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -59,6 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onChanged: (Places? value) {
                       setState(() {
                         _character = value;
+                        type = 1;
                       });
                     },
                   ),
@@ -76,6 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onChanged: (Places? value) {
                       setState(() {
                         _character = value;
+                        type = 2;
                       });
                     },
                   ),
@@ -93,7 +95,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             color: AppColors.green,
             text1: "دخول",
             onPressed: () {
-              navigateAndFinished(context, HomeOwner());
+              print(type);
+              type == 1
+                  ? navigateAndFinished(context, VisitorView())
+                  : navigateAndFinished(context, HomeOwner());
             },
           ),
         ],
