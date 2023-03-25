@@ -47,7 +47,8 @@ class EventDetails extends StatelessWidget {
                   // navigateTo(context, MapScreen());
             }),
           ),
-          Spacer(),
+
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
