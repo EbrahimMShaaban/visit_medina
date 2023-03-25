@@ -69,16 +69,17 @@ class RatingView extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: Container(
-                height: 70,
-                child: ButtonTemplate(
-                    color: AppColors.green,
-                    minwidth: 50,
+            SizedBox(
+              height: 50,
+            ),
+            Container(
+              height: 70,
+              child: ButtonTemplate(
+                  color: AppColors.green,
+                  minwidth: 50,
 
-                    text1: 'حفظ',
-                    onPressed: () {}),
-              ),
+                  text1: 'حفظ',
+                  onPressed: () {}),
             ),
           ],
         ),

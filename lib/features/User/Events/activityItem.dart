@@ -17,24 +17,38 @@ class ActivityItem extends StatelessWidget {
         onTap: () {
           navigateTo(context, const EventDetails());
         },
-        child: Container(
+        child:  Container(
           height: 200,
           padding: EdgeInsets.all(10),
+          margin:  EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+              color: AppColors.greenlight,
+              borderRadius: BorderRadius.circular(15)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                AppImages.sekka,
-                width: 140,
-              ),
+              Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                            AppImages.sekka,
+                          )),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Image.asset(
+                    AppImages.sekka,
+                    // width: 140,
+                  )),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('سكة حديد الحجاز',
+                  Text('سكة حد يد الحجاز',
                       style: AppTextStyles.bold
                           .copyWith(color: AppColors.green, fontSize: 22)),
-                  Icon(Icons.favorite_outline)
+                  Icon(
+                    Icons.favorite_outline,
+                    size: 35,
+                  )
                 ],
               )
             ],
