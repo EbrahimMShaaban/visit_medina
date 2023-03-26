@@ -18,6 +18,8 @@ class VisitorView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
+        title: Image.asset(AppImages.Logo,height: 70),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
@@ -25,7 +27,7 @@ class VisitorView extends StatelessWidget {
                 onPressed: () {
                   navigateTo(context, ProfilUser());
                 },
-                icon: Icon(Icons.person)),
+                icon: Icon(Icons.person,size: 35,)),
           ),
         ],
         leading: Padding(

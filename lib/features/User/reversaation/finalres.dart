@@ -46,9 +46,10 @@ class FinalReserv extends StatelessWidget {
                 fit: BoxFit.fitWidth,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+              //  padding: EdgeInsets.symmetric(horizontal: 15),
                 margin: EdgeInsets.symmetric(vertical: 10),
                 height: 80,
+                width: MediaQueryHelper.sizeFromWidth(context, 1),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: AppColors.greenlight),
@@ -63,14 +64,14 @@ class FinalReserv extends StatelessWidget {
                       ],
                     ),
                     const VerticalDivider(
-                      thickness: 2,
+                      thickness: 1,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [Icon(Icons.access_time), Text('6:00 pm')],
                     ),
                     const VerticalDivider(
-                      thickness: 2,
+                      thickness: 1,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -80,11 +81,15 @@ class FinalReserv extends StatelessWidget {
                       ],
                     ),
                     const VerticalDivider(
-                      thickness: 2,
+                      thickness: 1,
                     ),
                     Column(
+
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [Icon(Icons.person), Text('عدد الزائرين 2')],
+                      children: [Icon(Icons.person), Text('عدد الزوار 2',maxLines: 2,
+
+                        overflow: TextOverflow.clip,
+                      )],
                     ),
                   ],
                 ),
