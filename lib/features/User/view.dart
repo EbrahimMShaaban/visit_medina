@@ -50,82 +50,85 @@ class VisitorView extends StatelessWidget {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 20),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              InkWell(
-                onTap: () {
-                  navigateTo(context, ActivityView());
-                },
-                child: Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 20),
-                  height: 100,
-                  width: 220,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: AppColors.green),
-                  child: Center(
-                      child: Text(" الفعاليات والأنشطة",
-                          textAlign: TextAlign.center,
-                          style: AppTextStyles.bold.copyWith(fontSize: 20))),
+        child: SingleChildScrollView(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () {
+                    navigateTo(context, ActivityView());
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 20),
+                    height: 100,
+                    width: 220,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: AppColors.green),
+                    child: Center(
+                        child: Text(" الفعاليات والأنشطة",
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  navigateTo(context, ActivityView());
-                },
-                child: Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 20),
-                  height: 100,
-                  width: 220,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: AppColors.green),
-                  child: Center(
-                      child: Text(" الاماكن السياحية",
-                          textAlign: TextAlign.center,
-                          style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                InkWell(
+                  onTap: () {
+                    navigateTo(context, ActivityView());
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 20),
+                    height: 100,
+                    width: 220,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: AppColors.green),
+                    child: Center(
+                        child: Text(" الاماكن السياحية",
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: (){
-                  navigateTo(context, BookingScreen());
-                },
-                child: Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 20),
-                  height: 100,
-                  width: 220,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: AppColors.green),
-                  child: Center(
-                      child: Text("الحجوزات",
-                          style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                InkWell(
+                  onTap: (){
+                    navigateTo(context, BookingScreen());
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 20),
+                    height: 100,
+                    width: 220,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: AppColors.green),
+                    child: Center(
+                        child: Text("الحجوزات",
+                            style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  navigateTo(context, FavouriteScreen());
-                },
-                child: Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 20),
-                  height: 100,
-                  width: 220,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: AppColors.green),
-                  child: Center(
-                      child: Text("المفضلة",
-                          style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                InkWell(
+                  onTap: () {
+                    navigateTo(context, FavouriteScreen());
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 20),
+                    height: 100,
+                    width: 220,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: AppColors.green),
+                    child: Center(
+                        child: Text("المفضلة",
+                            style: AppTextStyles.bold.copyWith(fontSize: 20))),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: SizedBox(),
-              ),
-            ],
+                Expanded(
+                  child: SizedBox(),
+                ),
+              ],
+            ),
           ),
         ),
       )),
