@@ -41,7 +41,7 @@ class _RegistScreenState extends State<RegistScreen> {
                   Container(
 
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 1.2,
+                    height: MediaQuery.of(context).size.height / 1,
                     child: Column(children: const [
                       SizedBox(
                         height: 65,

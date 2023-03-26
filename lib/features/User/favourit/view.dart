@@ -30,7 +30,7 @@ class FavouriteScreen extends StatelessWidget {
                 },
                 child: Container(
                   height: 130,
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(15),
                   margin: EdgeInsets.symmetric(vertical: 10),
                   decoration: BoxDecoration(
                       color: AppColors.greenlight,
