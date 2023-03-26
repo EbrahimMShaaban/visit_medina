@@ -20,63 +20,56 @@ class FavouriteScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: InkWell(
-                onTap: () {
-                  navigateTo(context, const EventDetails());
-                },
-                child: Container(
-                  height: 130,
-                  padding: EdgeInsets.all(15),
-                  margin: EdgeInsets.symmetric(vertical: 10),
+        child: InkWell(
+          onTap: () {
+            navigateTo(context, const EventDetails());
+          },
+          child: Container(
+            height: 130,
+            padding: EdgeInsets.all(15),
+            margin: EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+                color: AppColors.greenlight,
+                borderRadius: BorderRadius.circular(15)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 110,
+                  width: 110,
                   decoration: BoxDecoration(
-                      color: AppColors.greenlight,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 110,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                              AppImages.sekka,
-                            )),
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text('سكة حد يد الحجاز',
-                              style: AppTextStyles.bold.copyWith(
-                                  color: AppColors.green, fontSize: 22)),
-                          InkWell(
-                            onTap: () {},
-                            child: Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Icon(
-                                Icons.favorite_outlined,
-                                size: 35,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                      image: DecorationImage(
+                          image: AssetImage(
+                        AppImages.sekka,
+                      )),
+                      borderRadius: BorderRadius.circular(20)),
                 ),
-              ),
+                SizedBox(
+                  width: 20,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text('سكة حد يد الحجاز',
+                        style: AppTextStyles.bold.copyWith(
+                            color: AppColors.green, fontSize: 22)),
+                    InkWell(
+                      onTap: () {},
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Icon(
+                          Icons.favorite_outlined,
+                          size: 35,
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
