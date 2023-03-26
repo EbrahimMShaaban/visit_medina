@@ -32,11 +32,11 @@ dependencies:
     sdk: flutter
   shared_preferences:
   smooth_page_indicator: ^1.0.0+2
-  flutter_localization: ^0.1.10
+  flutter_localization:
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
   dio:
-  horizontal_calendar: ^1.0.2
+  horizontal_calendar:
 
 
 

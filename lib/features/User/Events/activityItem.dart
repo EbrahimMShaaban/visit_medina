@@ -32,7 +32,7 @@ class _ActivityItemState extends State<ActivityItem> {
               color: AppColors.greenlight,
               borderRadius: BorderRadius.circular(15)),
           child: Row(
-// mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
@@ -48,25 +48,31 @@ class _ActivityItemState extends State<ActivityItem> {
               SizedBox(
                 width: 20,
               ),
-              Text('سكة حد يد الحجاز',
-                  style: AppTextStyles.bold
-                      .copyWith(color: AppColors.green, fontSize: 22)),
-              Spacer(),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    favorite = !favorite;
-                  });
-                },
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Icon(
-                    favorite ? Icons.favorite_outlined :
-                    Icons.favorite_border,
-                    size: 35,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text('سكة حد يد الحجاز',
+                      style: AppTextStyles.bold
+                          .copyWith(color: AppColors.green, fontSize: 22)),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        favorite = !favorite;
+                      });
+                    },
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Icon(
+                        favorite
+                            ? Icons.favorite_outlined
+                            : Icons.favorite_border,
+                        size: 35,
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                ],
+              )
             ],
           ),
         ),
