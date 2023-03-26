@@ -36,7 +36,7 @@ class FavouriteScreen extends StatelessWidget {
                       color: AppColors.greenlight,
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
-// mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
@@ -45,30 +45,32 @@ class FavouriteScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                  AppImages.sekka,
-                                )),
+                              AppImages.sekka,
+                            )),
                             borderRadius: BorderRadius.circular(20)),
                       ),
                       SizedBox(
                         width: 20,
                       ),
-                      Text('سكة حد يد الحجاز',
-                          style: AppTextStyles.bold
-                              .copyWith(color: AppColors.green, fontSize: 22)),
-                      Spacer(),
-                      InkWell(
-                        onTap: () {
-
-                        },
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Icon(
-                            Icons.favorite_outlined ,
-
-                            size: 35,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text('سكة حد يد الحجاز',
+                              style: AppTextStyles.bold.copyWith(
+                                  color: AppColors.green, fontSize: 22)),
+                          InkWell(
+                            onTap: () {},
+                            child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Icon(
+                                Icons.favorite_outlined,
+                                size: 35,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                        ],
+                      )
                     ],
                   ),
                 ),

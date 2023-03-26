@@ -20,7 +20,7 @@ class ReversationView extends StatefulWidget {
 class _ReversationViewState extends State<ReversationView> {
   final TextEditingController controller = TextEditingController();
   final FixedExtentScrollController itemController =
-      FixedExtentScrollController();
+  FixedExtentScrollController();
   int personsnum = 1;
   DateTime? _dateTime;
 
@@ -74,35 +74,35 @@ class _ReversationViewState extends State<ReversationView> {
                   flex: 3,
                   child: Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
                       child: Container(
 
-                          //   padding: EdgeInsets.all(10.0),
+                        //   padding: EdgeInsets.all(10.0),
                           child: HorizontalCalendar(
-                        date: DateTime.now(),
-                        textColor: Colors.black45,
-                        backgroundColor: Colors.white,
-                        selectedColor: AppColors.green,
-                        showMonth: true,
+                            date: DateTime.now(),
+                            textColor: Colors.black45,
+                            backgroundColor: Colors.white,
+                            selectedColor: AppColors.green,
+                            showMonth: true,
 
-                        //   dateTextStyle: AppTextStyles.w600,
-                        //   dayTextStyle: AppTextStyles.w600,
-                        //   monthTextStyle: AppTextStyles.w600
-                        //       .copyWith(color: Colors.black),
-                        //   selectedDayStyle: AppTextStyles.w600
-                        //       .copyWith(color: AppColors.white),
-                        //   selectedDateStyle: AppTextStyles.w600
-                        //       .copyWith(color: Colors.black),
-                        //   DateTime.now(),
-                        //   width: MediaQuery.of(context).size.width * .2,
-                        //   height: 120,
-                        // selectionColor: AppColors.green,
-                        //   itemController: itemController,
+                            //   dateTextStyle: AppTextStyles.w600,
+                            //   dayTextStyle: AppTextStyles.w600,
+                            //   monthTextStyle: AppTextStyles.w600
+                            //       .copyWith(color: Colors.black),
+                            //   selectedDayStyle: AppTextStyles.w600
+                            //       .copyWith(color: AppColors.white),
+                            //   selectedDateStyle: AppTextStyles.w600
+                            //       .copyWith(color: Colors.black),
+                            //   DateTime.now(),
+                            //   width: MediaQuery.of(context).size.width * .2,
+                            //   height: 120,
+                            // selectionColor: AppColors.green,
+                            //   itemController: itemController,
 
-                        onDateSelected: (date) {
-                          print(date.toString());
-                        },
-                      ))),
+                            onDateSelected: (date) {
+                              print(date.toString());
+                            },
+                          ))),
                 ),
               ],
             ),
