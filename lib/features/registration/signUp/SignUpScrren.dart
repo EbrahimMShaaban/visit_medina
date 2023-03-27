@@ -26,6 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: ListView(
+        physics: NeverScrollableScrollPhysics(),
         children: [
           TextFieldTemplate(
             hintText: "الاسم ",
