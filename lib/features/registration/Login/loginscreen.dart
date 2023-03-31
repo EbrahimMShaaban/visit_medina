@@ -67,8 +67,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       .then((value) {
                     CacheHelper.saveData(
                         key: 'type', value: state.userModel!.type.toString() );
+                    UID = CacheHelper.getData(key: 'uId');
                     TYPE = CacheHelper.getData(key: 'type');
-
                     print(state.userModel!.type.toString() +
                         "ddddddddddddddddddddddddddddddd");
                     if (state.userModel!.type.toString() == "user")
