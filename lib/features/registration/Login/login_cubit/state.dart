@@ -1,19 +1,21 @@
-abstract class SocialLoginStates {}
+import 'package:visit_medina/models/user_model.dart';
 
-class SocialLoginInitialState extends SocialLoginStates {}
+abstract class LoginStates {}
 
-class SocialLoginLoadingState extends SocialLoginStates {}
+class LoginInitialState extends LoginStates {}
 
-class SocialLoginSuccessState extends SocialLoginStates {
-  final String uId;
+class LoginLoadingState extends LoginStates {}
 
-  SocialLoginSuccessState(this.uId);
+class LoginSuccessState extends LoginStates {
+  final UserModel? userModel;
+
+  LoginSuccessState(this.userModel);
 }
 
-class SocialLoginErrorState extends SocialLoginStates {
+class LoginErrorState extends LoginStates {
   late final String error;
 
-  SocialLoginErrorState(this.error);
+  LoginErrorState(this.error);
 }
 
-class SocialShowPasswordVisibilityState extends SocialLoginStates {}
+class ShowPasswordVisibilityState extends LoginStates {}

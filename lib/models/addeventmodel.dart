@@ -1,4 +1,4 @@
-class SocialPostModel {
+class AddEventModel {
   String? name;
   String? uId;
   String? image;
@@ -6,7 +6,7 @@ class SocialPostModel {
   String? postText;
   String? postImage;
 
-  SocialPostModel({
+  AddEventModel({
     this.name,
     this.uId,
     this.image,
@@ -15,7 +15,7 @@ class SocialPostModel {
     this.postText,
   });
 
-  SocialPostModel.fromJson(Map<String, dynamic> json) {
+  AddEventModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     uId = json['uId'];
     image = json['image'];

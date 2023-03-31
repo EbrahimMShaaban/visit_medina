@@ -34,8 +34,17 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   flutter_localization:
   bloc: ^8.1.1
+  motion_toast: ^2.6.5
   flutter_bloc: ^8.1.2
   dio:
+  fluttertoast: ^8.0.9
+  firebase_core: ^2.1.1
+  firebase_auth: ^4.1.0
+  cloud_firestore: ^4.0.3
+  firebase_storage: ^11.0.4
+  cached_network_image: ^3.2.2
+  image_picker: ^0.8.6
+  firebase_messaging: ^14.1.0
   horizontal_calendar:
 
 

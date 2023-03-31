@@ -126,7 +126,8 @@ class HomeOwner extends StatelessWidget {
                     showMyDialog(message:  "تسجيل الخروج",
                         context: context,
                         ontap: () {
-                          navigateAndFinished(context, RegistScreen());
+                          signout(context);
+
                         });
                   }),
             ),

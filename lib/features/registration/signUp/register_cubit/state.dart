@@ -1,23 +1,30 @@
-abstract class SocialRegisterStates {}
+import '../../../../models/user_model.dart';
 
-class SocialRegisterInitialState extends SocialRegisterStates {}
+abstract class RegisterStates {}
 
-class SocialRegisterLoadingState extends SocialRegisterStates {}
+class RegisterInitialState extends RegisterStates {}
 
-class SocialRegisterSuccessState extends SocialRegisterStates {}
+class RegisterLoadingState extends RegisterStates {}
 
-class SocialRegisterErrorState extends SocialRegisterStates {
-  late final String error;
+class RegisterSuccessState extends RegisterStates {
 
-  SocialRegisterErrorState(this.error);
+  final String? uid;
+
+  RegisterSuccessState(this.uid);
 }
 
-class SocialCreateUserSuccessState extends SocialRegisterStates {}
-
-class SocialCreateUserErrorState extends SocialRegisterStates {
+class RegisterErrorState extends RegisterStates {
   late final String error;
 
-  SocialCreateUserErrorState(this.error);
+  RegisterErrorState(this.error);
 }
 
-class SocialRegisterShowPasswordVisibilityState extends SocialRegisterStates {}
+class CreateUserSuccessState extends RegisterStates {}
+
+class CreateUserErrorState extends RegisterStates {
+  late final String error;
+
+  CreateUserErrorState(this.error);
+}
+
+class RegisterShowPasswordVisibilityState extends RegisterStates {}

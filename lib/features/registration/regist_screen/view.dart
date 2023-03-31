@@ -6,6 +6,9 @@ import 'package:visit_medina/features/registration/signUp/SignUpScrren.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/images.dart';
 
+import '../../../shared/components/end_point.dart';
+import '../../../shared/network/local/shared_preferences.dart';
+
 class RegistScreen extends StatefulWidget {
   const RegistScreen({Key? key}) : super(key: key);
 
@@ -15,7 +18,10 @@ class RegistScreen extends StatefulWidget {
 
 class _RegistScreenState extends State<RegistScreen> {
   @override
+
   Widget build(BuildContext context) {
+    UID = CacheHelper.getData(key: 'uId');
+    TYPE = CacheHelper.getData(key: 'type');
     return Directionality(
       textDirection: TextDirection.ltr,
       child: DefaultTabController(

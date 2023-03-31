@@ -38,7 +38,8 @@ class VisitorView extends StatelessWidget {
                     message: "تسجيل الخروج",
                     context: context,
                     ontap: () {
-                      navigateAndFinished(context, RegistScreen());
+                      signout(context);
+
                     });
               },
               icon: Icon(

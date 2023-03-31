@@ -3,6 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:visit_medina/features/registration/regist_screen/view.dart';
 import 'package:visit_medina/shared/styles/images.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
+import 'package:visit_medina/viewscreen.dart';
 
 import '../../shared/components/navigator.dart';
 import '../../shared/network/local/shared_preferences.dart';
@@ -49,10 +50,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   var boardController = PageController();
 
   void finishOnBoarding() {
-    navigateAndFinished(context, RegistScreen());
-    // CacheHelper.saveData(key: 'token', value: true).then((value) {
-    //
-    // });
+    CacheHelper.saveData(key: 'OnBoarding', value: true).then((value) {
+      navigateAndFinished(context, ViewScrren());
+    });
+
   }
 
   @override

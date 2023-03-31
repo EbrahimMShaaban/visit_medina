@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:visit_medina/features/User/favourit/view.dart';
+import 'package:visit_medina/features/registration/regist_screen/view.dart';
 import 'package:visit_medina/shared/components/components.dart';
+import 'package:visit_medina/shared/components/end_point.dart';
 import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
 import '../../../shared/styles/images.dart';
-import '../Owner/Home/bookings.dart';
-import '../registration/regist_screen/view.dart';
-import 'Events/view.dart';
-import 'Profile/view.dart';
+import 'features/User/Events/view.dart';
 
-class VisitorView extends StatelessWidget {
-  const VisitorView({Key? key}) : super(key: key);
+
+class ViewScrren extends StatelessWidget {
+  const ViewScrren({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,29 +20,15 @@ class VisitorView extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 80,
         title: Image.asset(AppImages.Logo,height: 70),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: IconButton(
-                onPressed: () {
-                  navigateTo(context, ProfilUser());
-                },
-                icon: Icon(Icons.person,size: 35,)),
-          ),
-        ],
+
         leading: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: IconButton(
               onPressed: () {
-                showMyDialog(
-                    message: "تسجيل الخروج",
-                    context: context,
-                    ontap: () {
-                      navigateAndFinished(context, RegistScreen());
-                    });
+               navigateTo(context, RegistScreen());
               },
               icon: Icon(
-                Icons.output_sharp,
+                Icons.login_sharp,
                 color: Colors.red,
               )),
         ),
@@ -92,38 +78,7 @@ class VisitorView extends StatelessWidget {
                             style: AppTextStyles.bold.copyWith(fontSize: 20))),
                   ),
                 ),
-                InkWell(
-                  onTap: (){
-                    navigateTo(context, BookingScreen());
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 20),
-                    height: 100,
-                    width: 220,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.green),
-                    child: Center(
-                        child: Text("الحجوزات",
-                            style: AppTextStyles.bold.copyWith(fontSize: 20))),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    navigateTo(context, FavouriteScreen());
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 20),
-                    height: 100,
-                    width: 220,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.green),
-                    child: Center(
-                        child: Text("المفضلة",
-                            style: AppTextStyles.bold.copyWith(fontSize: 20))),
-                  ),
-                ),
+
                 Expanded(
                   child: SizedBox(),
                 ),

@@ -1,23 +1,25 @@
-abstract class RegisterStates {}
+abstract class AddEventStates {}
 
-class RegisterInitialState extends RegisterStates {}
+class AddEventInitialState extends AddEventStates {}
 
-class RegisterLoadingState extends RegisterStates {}
+class AddEventOrPlaceLoadingState extends AddEventStates {}
 
-class RegisterSuccessState extends RegisterStates {}
+class AddEventOrPlaceSuccessState extends AddEventStates {}
 
-class RegisterErrorState extends RegisterStates {
+class AddEventOrPlaceErrorState extends AddEventStates {
   late final String error;
 
-  RegisterErrorState(this.error);
+  AddEventOrPlaceErrorState(this.error);
 }
 
-class CreateUserSuccessState extends RegisterStates {}
 
-class CreateUserErrorState extends RegisterStates {
-  late final String error;
+class PostImagePickedSuccessState extends AddEventStates {}
 
-  CreateUserErrorState(this.error);
+class PostImagePickedErrorState extends AddEventStates {
+
+
 }
 
-class RegisterShowPasswordVisibilityState extends RegisterStates {}
+
+
+class RemovePostImageSuccessState extends AddEventStates {}
