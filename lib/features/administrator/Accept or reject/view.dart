@@ -17,7 +17,7 @@ class _Accept_Or_RejectState extends State<Accept_Or_Reject> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("قبول أو رفض طلب المالك"),
+        title: Text("قبول أو رفض حدث"),
       ),
       body: SafeArea(
           child: ListView.builder(
@@ -77,7 +77,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "admin",
+                      "test",
                       style: AppTextStyles.bold.copyWith(
                           color: AppColors.primarycolor, fontSize: 22),
                     ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "275310875530",
+    "project_id": "visitmedina-409da",
+    "storage_bucket": "visitmedina-409da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275310875530:android:964c57dc43a70fadc3ee73",
+        "android_client_info": {
+          "package_name": "com.example.visit_medina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275310875530-7i53l46to8tkki3uc4f20c3o8r6jq7o7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPQdeM0bjkIOtDTt0HGKh5ufbA2rxhiD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275310875530-7i53l46to8tkki3uc4f20c3o8r6jq7o7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

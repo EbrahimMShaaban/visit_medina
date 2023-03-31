@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visit_medina/shared/components/end_point.dart';
 import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/images.dart';
@@ -55,7 +56,7 @@ class _ActivityItemState extends State<ActivityItem> {
                   Text('سكة حد يد الحجاز',
                       style: AppTextStyles.bold
                           .copyWith(color: AppColors.green, fontSize: 22)),
-                  InkWell(
+                  UID !=null ?   InkWell(
                     onTap: () {
                       setState(() {
                         favorite = !favorite;
@@ -70,7 +71,7 @@ class _ActivityItemState extends State<ActivityItem> {
                         size: 35,
                       ),
                     ),
-                  ),
+                  ):SizedBox(),
                 ],
               )
             ],

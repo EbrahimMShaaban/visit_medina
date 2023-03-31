@@ -7,6 +7,8 @@ import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/images.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
 
+import '../../../shared/components/end_point.dart';
+import '../../registration/regist_screen/view.dart';
 import '../reversaation/view.dart';
 import 'map.dart';
 
@@ -54,25 +56,7 @@ class EventDetails extends StatelessWidget {
       //     ),
       //     Text(
       //         'توجه إلى متحف سمة الحجاز، الذي يقع في المحطة ذات الطراز المعماري الإدواردي، حيث فتح المتحف أبوابه لجميع الزائرين من كل مكان من أجل الاستمتاع بكل ما يحتويه من مقتنيات وآثار تاريخية وإسلامية، بالاضافة الى مساحات واسعة للاستمتاع بالمكان.'),
-      //     Padding(
-      //       padding: const EdgeInsets.all(8.0),
-      //       child: ButtonTemplate(
-      //           color: AppColors.green, text1: 'التفاصيل', onPressed: () {
-      //
-      //             // navigateTo(context, MapScreen());
-      //       }),
-      //     ),
-      //
-      //
-      //     Row(
-      //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //       children: [
-      //         ButtonTemplate(
-      //             color: AppColors.green,
-      //             minwidth: 50,
-      //             text1: 'شاركنا رأيك',
-      //
-      // ),
+
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
         child: ListView(
@@ -191,14 +175,25 @@ class EventDetails extends StatelessWidget {
                     minwidth: 50,
                     text1: 'شاركنا رأيك',
                     onPressed: () {
-                      navigateTo(context, RatingView());
+                      UID !=null ? navigateTo(context, RatingView()): showMyDialog(
+                          message: " تسجيل الدخول لحجز",
+                          context: context,
+                          ontap: () {
+                            navigateAndFinished(context, RegistScreen());
+                          });
                     }),
                 ButtonTemplate(
                     color: AppColors.green,
                     minwidth: 50,
                     text1: 'احجز الأن',
                     onPressed: () {
-                      navigateTo(context, ReversationView());
+                      UID !=null ? navigateTo(context, ReversationView())
+                          : showMyDialog(
+                          message: " تسجيل الدخول لحجز",
+                          context: context,
+                          ontap: () {
+                            navigateAndFinished(context, RegistScreen());
+                          });
                     }),
               ],
             )

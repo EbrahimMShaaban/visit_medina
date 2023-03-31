@@ -66,30 +66,17 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
             height: 10,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Column(
-                children: [
-                  Text("اماكن تم اضافتها",
-                      style: AppTextStyles.bold
-                          .copyWith(color: AppColors.black,fontSize: 19)),
-                  Text(
-                    "100",
-                    style: AppTextStyles.bold
-                        .copyWith(color: AppColors.primarycolor),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text("حدث تم اضافتة",style: AppTextStyles.bold
-                      .copyWith(color: AppColors.black,fontSize: 19)),
-                  Text(
-                    "55",
-                    style: AppTextStyles.bold
-                        .copyWith(color: AppColors.primarycolor),
-                  ),
-                ],
+              Text("عدد الحجوزات :",
+                  style: AppTextStyles.bold
+                      .copyWith(color: AppColors.primarycolor,fontSize: 25)),
+              SizedBox(width: 10,),
+              Text(
+                "100",
+                style: AppTextStyles.bold
+                    .copyWith(color: AppColors.black),
               ),
             ],
           ),
