@@ -19,6 +19,7 @@ class _ActivityItemState extends State<ActivityItem> {
   bool favorite = false;
 
   Widget build(BuildContext context) {
+    print(UID);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: InkWell(

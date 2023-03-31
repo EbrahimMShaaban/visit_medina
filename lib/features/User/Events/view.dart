@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../shared/components/end_point.dart';
+import '../../../shared/network/local/shared_preferences.dart';
 import '../../../shared/styles/colors.dart';
 import 'activityItem.dart';
 
@@ -8,6 +10,8 @@ class ActivityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UID = CacheHelper.getData(key: 'uId');
+
     return Scaffold(
       appBar: AppBar(
         // title:const Text('عرض الفعاليات والأنشطة'),
