@@ -1,0 +1,68 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:visit_medina/features/registration/signUp/register_cubit/state.dart';
+
+import '../../../../models/user_model.dart';
+
+class RegisterCubit extends Cubit<RegisterStates> {
+  RegisterCubit() : super(RegisterInitialState());
+
+  static RegisterCubit get(context) => BlocProvider.of(context);
+
+  void userRegister({
+    required String name,
+    required String email,
+    required String password,
+    required String type,
+  }) {
+    emit(RegisterLoadingState());
+    FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    )
+        .then((value) {
+      print(value.user!.email);
+      print(value.user!.uid);
+      userCreate(
+        name: name,
+        email: email,
+        type: type,
+        uId: value.user!.uid,
+      );
+      // emit(RegisterSuccessState());
+    }).catchError((error) {
+      emit(RegisterErrorState(error.toString()));
+    });
+  }
+
+  void userCreate({
+    required String name,
+    required String email,
+    required String type,
+    required String uId,
+  }) {
+    UserModel model = UserModel(
+      type: type,
+      name: name,
+      email: email,
+      uId: uId,
+
+    );
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(uId)
+        .set(model.toMap())
+        .then((value) {
+      emit(CreateUserSuccessState());
+    }).catchError((error) {
+      emit(CreateUserErrorState(error.toString()));
+    });
+  }
+
+
+
+}
