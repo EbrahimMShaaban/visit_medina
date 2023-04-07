@@ -1,37 +1,69 @@
-class AddEventModel {
-  String? name;
+class EventModel {
+  String? address;
   String? uId;
-  String? image;
+  String? docuId;
+  String? description;
+  bool? accept;
+  String? price;
+  String? number;
+  String? time;
   String? dateTime;
-  String? postText;
+  String? date;
+  String? event;
   String? postImage;
+  String? type;
+  String? name;
 
-  AddEventModel({
-    this.name,
+  EventModel({
+    this.address,
     this.uId,
-    this.image,
+    this.docuId,
+    this.description,
+    this.accept,
+    this.price,
+    this.number,
+    this.time,
     this.dateTime,
+    this.date,
     this.postImage,
-    this.postText,
+    this.event,
+    this.type,
+    this.name,
   });
 
-  AddEventModel.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
+  EventModel.fromJson(Map<String, dynamic> json) {
+    address = json['address'];
     uId = json['uId'];
-    image = json['image'];
+    docuId = json['docuId'];
+    description = json['description'];
+    accept = json['accept'];
+    price = json['price'];
+    number = json['number'];
+    time = json['time'];
     dateTime = json['dateTime'];
-    postText = json['postText'];
+    date = json['date'];
     postImage = json['postImage'];
+    event = json['event'];
+    type = json['type'];
+    name = json['name'];
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
+      'address': address,
+      'event': event,
       'uId': uId,
-      'image': image,
+      'docuId': docuId,
+      'description': description,
+      'accept': accept,
+      'price': price,
+      'number': number,
+      'time': time,
       'dateTime': dateTime,
-      'postText': postText,
+      'date': date,
       'postImage': postImage,
+      'type': type,
+      'name': name,
     };
   }
 }

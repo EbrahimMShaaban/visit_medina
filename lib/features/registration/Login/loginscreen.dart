@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:motion_toast/motion_toast.dart';
 
 import 'package:visit_medina/features/administrator/Home/view.dart';
 import 'package:visit_medina/features/registration/ForgotPassword/ForgotPassword.dart';
@@ -37,11 +38,22 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: "البريد الالكتروني",
               controller: emailcontroller,
               icon: Icon(Icons.person),
+              validator: (String? value) {
+                if (value!.isEmpty) {
+                  return 'برجاء كتابه البريد الإلكتروني ';
+                } else if (value.length < 5) {
+                  return 'برجاء كتابه البريد الإلكتروني بشكل صحيح';
+                } else if (!value.toString().contains('@')) {
+                  return ' @ يجب ان يحتوي البريد الإلكتروني علي  ';
+                }
+              },
             ),
             TextFieldTemplate(
               hintText: "كلمة المرور",
               controller: passwordcontroller,
               icon: Icon(Icons.lock),
+              isPassword: true,
+
             ),
             InkWell(
               onTap: () {
@@ -60,13 +72,19 @@ class _LoginScreenState extends State<LoginScreen> {
             BlocConsumer<LoginCubit, LoginStates>(
               listener: (context, state) {
                 print(state);
-
+                if (state is LoginErrorState) {
+                  MotionToast.error(
+                    description:  Text(state.error),
+                  ).show(context);
+                }
                 if (state is LoginSuccessState) {
                   CacheHelper.saveData(
                           key: 'uId', value: state.userModel!.uId )
                       .then((value) {
                     CacheHelper.saveData(
                         key: 'type', value: state.userModel!.type.toString() );
+                    CacheHelper.saveData(
+                        key: 'name', value: state.userModel!.name.toString() );
                     UID = CacheHelper.getData(key: 'uId');
                     TYPE = CacheHelper.getData(key: 'type');
                     print(state.userModel!.type.toString() +

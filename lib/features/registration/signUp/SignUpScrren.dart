@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:visit_medina/features/Owner/Home/view.dart';
 import 'package:visit_medina/features/User/view.dart';
 import 'package:visit_medina/features/registration/signUp/register_cubit/cubit.dart';
@@ -58,14 +59,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 icon: Icon(Icons.email),
                 validator: (String? value) {
                   if (value!.isEmpty) {
-                    return 'الارجاء ادخال الاميل ';
+                    return 'برجاء كتابه البريد الإلكتروني ';
+                  } else if (value.length < 5) {
+                    return 'برجاء كتابه البريد الإلكتروني بشكل صحيح';
+                  } else if (!value.toString().contains('@')) {
+                    return ' @ يجب ان يحتوي البريد الإلكتروني علي  ';
                   }
-                  return null;
                 },
               ),
               TextFieldTemplate(
                 hintText: "كلمة المرور",
-                controller: passwordcontroller,
+                controller: passwordcontroller,isPassword: true,
                 icon: Icon(Icons.lock),
                 validator: (String? value) {
                   if (value!.isEmpty) {
@@ -76,11 +80,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               TextFieldTemplate(
                 hintText: "تاكيد كلمة المرور",
-                controller: password2controller,
+                controller: password2controller,isPassword: true,
                 validator: (String? value) {
-                  // if (value != passwordcontroller) {
-                  //   return 'كلمة المرور غير متطابقة';
-                  // }
+                  if (passwordcontroller.text != password2controller.text) {
+                    return 'كلمة المرور غير متطابقة';
+                  }
                   return null;
                 },
                 icon: Icon(Icons.lock),
@@ -131,9 +135,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               BlocConsumer<RegisterCubit, RegisterStates>(
                 listener: (context, state) {
+                  if (state is RegisterErrorState) {
+                    MotionToast.error(
+                      description: Text(state.error),
+                    ).show(context);
+                  }
                   if (state is RegisterSuccessState) {
-                    CacheHelper.saveData(
-                            key: 'uId', value: state.uid )
+                    CacheHelper.saveData(key: 'uId', value: state.uid)
                         .then((value) {
 
                       type == "owner"
@@ -164,13 +172,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         );
                 },
               ),
-          ButtonTemplate(
-            color: AppColors.green,
-            text1: "دخول كزائر",
-            onPressed: () {
-          navigateAndFinished(context, ViewScrren());
-            },
-          ),
+              ButtonTemplate(
+                color: AppColors.green,
+                text1: "دخول كزائر",
+                onPressed: () {
+                  navigateAndFinished(context, ViewScrren());
+                },
+              ),
             ],
           ),
         ),

@@ -55,14 +55,17 @@ SizedBox(height: 40,),
                   icon: Icon(Icons.email),
                   validator: (String? value) {
                     if (value!.isEmpty) {
-                      return 'الارجاء ادخال الاميل ';
+                      return 'برجاء كتابه البريد الإلكتروني ';
+                    } else if (value.length < 5) {
+                      return 'برجاء كتابه البريد الإلكتروني بشكل صحيح';
+                    } else if (!value.toString().contains('@')) {
+                      return ' @ يجب ان يحتوي البريد الإلكتروني علي  ';
                     }
-                    return null;
                   },
                 ),
                 TextFieldTemplate(
                   hintText: "كلمة المرور",
-                  controller: passwordcontroller,
+                  controller: passwordcontroller,isPassword: true,
                   icon: Icon(Icons.lock),
                   validator: (String? value) {
                     if (value!.isEmpty) {
@@ -78,10 +81,18 @@ SizedBox(height: 40,),
                 ),
                 BlocConsumer<RegisterCubit, RegisterStates>(
                   listener: (context, state) {
+                    print(state);
                     if (state is RegisterSuccessState) {
-              Navigator.pop(context);
+
               MotionToast.success(
                 description:  Text("تم أضافة مشرف جديد"),
+              ).show(context);
+
+                    }
+                    if (state is RegisterErrorState) {
+
+              MotionToast.error(
+                description:  Text(state.error),
               ).show(context);
 
                     }
@@ -94,7 +105,7 @@ SizedBox(height: 40,),
                     )
                         : ButtonTemplate(
                       color: AppColors.green,
-                      text1: "دخول",
+                      text1: "أضافة مشرف جد يد",
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
 

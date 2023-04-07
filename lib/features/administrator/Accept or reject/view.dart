@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:visit_medina/features/Home/layout/state.dart';
+import 'package:visit_medina/features/administrator/Accept%20or%20reject/get_cubit/state.dart';
+import 'package:visit_medina/models/addeventmodel.dart';
 import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/images.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
+
+import 'get_cubit/cubit.dart';
 
 class Accept_Or_Reject extends StatefulWidget {
   const Accept_Or_Reject({Key? key}) : super(key: key);
@@ -15,23 +20,56 @@ class Accept_Or_Reject extends StatefulWidget {
 class _Accept_Or_RejectState extends State<Accept_Or_Reject> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("قبول أو رفض حدث"),
+    return BlocProvider(
+      create: (context) => GetEventCubit()..getEvent(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("قبول أو رفض حدث"),
+        ),
+        body: BlocConsumer<GetEventCubit, GetEventStates>(
+          listener: (context, state) {
+            // TODO: implement listener
+            print(state);
+          },
+          builder: (context, state) {
+            List<EventModel> eventModel= GetEventCubit.get(context).posts;
+
+            return SafeArea(
+                child: state is! GetEventOrPlaceSuccessState
+                    ? LinearProgressIndicator()
+                    : ListView.builder(
+                        itemCount: GetEventCubit.get(context).posts.length,
+                        itemBuilder: (context, index) {
+                          return
+                            ContainerAcceptOrReject(
+                            model: eventModel[index],
+                            onPressedAccept: () {
+                              GetEventCubit.get(context).AcceptEvent("${GetEventCubit.get(context).posts[index].docuId}");
+                            },
+                            onPressedRemove: () {
+                              GetEventCubit.get(context).RemoveEvent("${GetEventCubit.get(context).posts[index].docuId}");
+
+                            },
+                          );
+                        },
+                      ));
+          },
+        ),
       ),
-      body: SafeArea(
-          child: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return ContainerAcceptOrReject();
-        },
-      )),
     );
   }
 }
 
 class ContainerAcceptOrReject extends StatefulWidget {
-  const ContainerAcceptOrReject({Key? key}) : super(key: key);
+  const ContainerAcceptOrReject(
+      {Key? key,
+      required this.model,
+      this.onPressedAccept,
+      this.onPressedRemove})
+      : super(key: key);
+  final EventModel model;
+  final Function()? onPressedAccept;
+  final Function()? onPressedRemove;
 
   @override
   State<ContainerAcceptOrReject> createState() =>
@@ -64,7 +102,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                 flex: 1,
                 child: CircleAvatar(
                   radius: 30.0,
-                  backgroundImage: AssetImage(AppImages.person),
+                  backgroundImage:NetworkImage("${widget.model.postImage}"),
                   backgroundColor: Colors.transparent,
                 ),
               ),
@@ -77,7 +115,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "test",
+                      "${widget.model.name}",
                       style: AppTextStyles.bold.copyWith(
                           color: AppColors.primarycolor, fontSize: 22),
                     ),
@@ -86,7 +124,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: "العنوان:",
+                        text: "نوع الحدث: ",
                         style: AppTextStyles.bold.copyWith(
                             color: AppColors.primarycolor, fontSize: 19),
                         // style: AppTextStyles.w300.apply(
@@ -94,7 +132,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                         // ),
                         children: <TextSpan>[
                           TextSpan(
-                            text: "  فندق البسفور المدينة",
+                            text: widget.model.event,
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.greyDark, fontSize: 16),
                             //  style: AppTextStyles.lrTitles
@@ -104,7 +142,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: "النوع:",
+                        text: "النوع: ",
                         style: AppTextStyles.bold.copyWith(
                             color: AppColors.primarycolor, fontSize: 19),
                         // style: AppTextStyles.w300.apply(
@@ -112,7 +150,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                         // ),
                         children: <TextSpan>[
                           TextSpan(
-                            text: "  مكان سياحى",
+                            text: widget.model.type,
                             style: AppTextStyles.bold.copyWith(
                                 color: AppColors.greyDark, fontSize: 16),
                             //  style: AppTextStyles.lrTitles
@@ -129,52 +167,46 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
             height: 10,
           ),
           Divider(height: 20, color: Colors.black),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              RichText(
-                text: TextSpan(
-                  text: "الرقم: ",
-                  style: AppTextStyles.bold
-                      .copyWith(color: AppColors.primarycolor, fontSize: 19),
-                  // style: AppTextStyles.w300.apply(
-                  //   color: Colors.black,
-                  // ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: "050100100100",
-                      style: AppTextStyles.bold.copyWith(
-                        color: AppColors.greyDark,
-                        fontSize: 16,
-                      ),
+          RichText(
+            text: TextSpan(
+              text: "الرقم: ",
+              style: AppTextStyles.bold
+                  .copyWith(color: AppColors.primarycolor, fontSize: 22),
+              // style: AppTextStyles.w300.apply(
+              //   color: Colors.black,
+              // ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: widget.model.number,
+                  style: AppTextStyles.bold.copyWith(
+                    color: AppColors.greyDark,
+                    fontSize: 16,
+                  ),
 
-                      //  style: AppTextStyles.lrTitles
-                    ),
-                  ],
+                  //  style: AppTextStyles.lrTitles
                 ),
-              ),
-              RichText(
-                text: TextSpan(
-                  text: "السعر: ",
-                  style: AppTextStyles.bold
-                      .copyWith(color: AppColors.primarycolor, fontSize: 19),
-                  // style: AppTextStyles.w300.apply(
-                  //   color: Colors.black,
-                  // ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: '100 رس',
-                      style: AppTextStyles.bold.copyWith(
-                        color: AppColors.greyDark,
-                        fontSize: 16,
-                      ),
+              ],
+            ),
+          ),   RichText(
+            text: TextSpan(
+              text: "السعر: ",
+              style: AppTextStyles.bold
+                  .copyWith(color: AppColors.primarycolor, fontSize: 22),
+              // style: AppTextStyles.w300.apply(
+              //   color: Colors.black,
+              // ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: widget.model.price,
+                  style: AppTextStyles.bold.copyWith(
+                    color: AppColors.greyDark,
+                    fontSize: 16,
+                  ),
 
-                      //  style: AppTextStyles.lrTitles
-                    ),
-                  ],
+                  //  style: AppTextStyles.lrTitles
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           SizedBox(
             height: 10,
@@ -192,7 +224,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
               SizedBox(
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: Text(
-                  "Madina 13 Al Madina, المدينة المنور",
+                  "${widget.model.address}",
                   maxLines: 4,
                   style: AppTextStyles.bold
                       .copyWith(color: AppColors.primarycolor, fontSize: 13),
@@ -209,14 +241,14 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
               ButtonTemplate(
                 color: AppColors.primarycolor,
                 text1: "قبول",
-                onPressed: () {},
+                onPressed: widget.onPressedAccept!,
                 minheight: 50,
                 minwidth: MediaQuery.of(context).size.width / 3,
               ),
               ButtonTemplate(
                 color: Colors.red,
                 text1: "رفض",
-                onPressed: () {},
+                onPressed: widget.onPressedRemove!,
                 minheight: 50,
                 minwidth: MediaQuery.of(context).size.width / 3,
               )
