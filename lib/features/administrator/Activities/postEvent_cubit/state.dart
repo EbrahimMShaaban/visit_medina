@@ -10,6 +10,14 @@ class AddEventOrPlaceErrorState extends AddEventStates {
   late final String error;
 
   AddEventOrPlaceErrorState(this.error);
+}class uploadPostImageLoadingState extends AddEventStates {}
+
+class uploadPostImageSuccessState extends AddEventStates {}
+
+class uploadPostImageErrorState extends AddEventStates {
+  late final String error;
+
+  uploadPostImageErrorState(this.error);
 }
 
 

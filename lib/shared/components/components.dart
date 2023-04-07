@@ -117,7 +117,7 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
                       _isObscure == true
                           ? Icons.visibility_outlined
                           : Icons.visibility_off_outlined,
-                      color: AppColors.Bluehint),
+                      color: AppColors.green),
                   onPressed: () => setState(() => _isObscure = !_isObscure))
                   : null,
               filled: true,
@@ -134,9 +134,14 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
               errorBorder: const OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.all(Radius.circular(15))),
+
               disabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(15)))
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+            focusedErrorBorder:  const OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+
           )),
     );
   }

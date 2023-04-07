@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:visit_medina/features/registration/signUp/register_cubit/state.dart';
+import 'package:visit_medina/shared/components/end_point.dart';
+import 'package:visit_medina/shared/network/local/shared_preferences.dart';
 
 import '../../../../models/user_model.dart';
 
@@ -12,6 +14,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
 
   static RegisterCubit get(context) => BlocProvider.of(context);
   UserModel? userModel;
+
   void userRegister({
     required String name,
     required String email,
@@ -35,9 +38,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       );
       // userModel = UserModel.fromJson(value.data()!);
 
-      emit(RegisterSuccessState(
-          value.user!.uid
-      ));
+      emit(RegisterSuccessState(value.user!.uid));
     }).catchError((error) {
       emit(RegisterErrorState(error.toString()));
     });
@@ -49,24 +50,31 @@ class RegisterCubit extends Cubit<RegisterStates> {
     required String type,
     required String uId,
   }) {
-    UserModel model = UserModel(
+    UserModel userModell = UserModel(
       type: type,
       name: name,
       email: email,
       uId: uId,
-
+    );
+    userModel = UserModel(
+      type: type,
+      name: name,
+      email: email,
+      uId: uId,
     );
     FirebaseFirestore.instance
         .collection('users')
         .doc(uId)
-        .set(model.toMap())
+        .set(userModell.toMap())
         .then((value) {
+        CacheHelper.saveData(
+            key: 'type', value: type );
+        CacheHelper.saveData(
+            key: 'name', value: name );
       emit(CreateUserSuccessState());
     }).catchError((error) {
+      print(error);
       emit(CreateUserErrorState(error.toString()));
     });
   }
-
-
-
 }
