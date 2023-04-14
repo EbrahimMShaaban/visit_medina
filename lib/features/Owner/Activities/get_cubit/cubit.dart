@@ -34,6 +34,7 @@ class GetMyEventCubit extends Cubit<GetMyEventStates> {
             accept: element["accept"],
             address: element["address"],
             postImage: element["postImage"],
+            nameEvent:  element["nameEvent"],
             type: element["type"],
             time: element["time"],
             price: element["price"],

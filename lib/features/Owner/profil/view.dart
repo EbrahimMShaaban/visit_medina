@@ -61,8 +61,8 @@ class _ProfilOwnerState extends State<ProfilOwner> {
           }
 
           if (state is DeleteProfileSuccessState){
-            navigateAndFinished(
-                context, RegistScreen());
+
+            signout(context);
           }
         },
         builder: (context, state) {
