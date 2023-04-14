@@ -29,3 +29,14 @@ class UpdateProfileErrorState extends GetUserStates {
 }
 
 
+class DeleteProfileLoadingState extends GetUserStates {}
+
+class DeleteProfileSuccessState extends GetUserStates {}
+
+class DeleteProfileErrorState extends GetUserStates {
+  late final String error;
+
+  DeleteProfileErrorState(this.error);
+}
+
+

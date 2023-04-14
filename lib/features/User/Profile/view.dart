@@ -92,7 +92,7 @@ class _ProfilUserState extends State<ProfilUser> {
                                   text1: "تعديل الملف الشخصى",
                                   icon: Icons.person,
                                   onPressed: () {
-                                    GetUserCubit.get(context).updateDriverDate(
+                                    GetUserCubit.get(context).updateProfileDate(
                                         context: context,
                                         name: controllerName.text,
                                         email: controlleremail.text);

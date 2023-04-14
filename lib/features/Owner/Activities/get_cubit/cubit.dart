@@ -23,10 +23,13 @@ class GetMyEventCubit extends Cubit<GetMyEventStates> {
   void getMyEvent() {
     emit(GetMyEventOrPlaceLoadingState());
 
-    FirebaseFirestore.instance.collection('posts').get().then((value) {
-      print(value.docs.toString());
+    FirebaseFirestore.instance
+        .collection('posts')
+        .where("accept", isEqualTo: false)
+        .where("uId", isEqualTo: UID)
+        .get()
+        .then((value) {
       value.docs.forEach((element) {
-        print(element.id + "Dddddddddddd");
         myPosts.add(EventModel(
             accept: element["accept"],
             address: element["address"],
@@ -41,11 +44,6 @@ class GetMyEventCubit extends Cubit<GetMyEventStates> {
             date: element["date"],
             docuId: element.id,
             uId: element["uId"]));
-        // element.reference.collection('posts').get().then((value) {
-        //   // likes.add(value.docs.length);
-        //   // postsId.add(element.id);
-        //
-        // }).catchError((error) {});
       });
       emit(GetMyEventOrPlaceSuccessState());
     }).catchError((error) {
@@ -56,7 +54,7 @@ class GetMyEventCubit extends Cubit<GetMyEventStates> {
 
   void getAllOrder() {
     emit(GetAllOrderLoadingState());
-print(UID);
+    print(UID);
     FirebaseFirestore.instance.collection('reservation').get().then((value) {
       print(value.docs.toString());
       value.docs.forEach((element) {
@@ -84,7 +82,6 @@ print(UID);
     FirebaseFirestore.instance.collection('rating').get().then((value) {
       print(value.docs.toString());
       value.docs.forEach((element) {
-        print(element.id + "Dddddddddddd");
         myComments.add(CommentsModel(
             title: element["title"],
             name_event: element["name_event"],

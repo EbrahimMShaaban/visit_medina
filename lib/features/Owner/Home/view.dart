@@ -27,9 +27,7 @@ class HomeOwner extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return BlocProvider(
-      create: (context) =>
-      GetUserCubit()
-        ..getUserData(),
+      create: (context) => GetUserCubit()..getUserData(),
       child: Scaffold(
         appBar: AppBar(
           title: Text("الصفحة الرئيسية(المالك)",
@@ -42,7 +40,6 @@ class HomeOwner extends StatelessWidget {
           },
           builder: (context, state) {
             UserModel? userModel = GetUserCubit.get(context).userModel;
-
             return SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -122,7 +119,7 @@ class HomeOwner extends StatelessWidget {
                             text1: "الملف الشخصى",
                             icon: Icons.person,
                             onPressed: () {
-                              navigateTo(context, ProfilOwner());
+                              navigateTo(context, ProfilOwner(userModel: userModel,));
                             }),
                       ),
                       SizedBox(

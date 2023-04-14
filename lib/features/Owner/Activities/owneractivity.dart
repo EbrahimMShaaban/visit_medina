@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:motion_toast/motion_toast.dart';
+import 'package:visit_medina/features/Owner/Activities/activity_waiting.dart';
 import 'package:visit_medina/features/Owner/Activities/under%20processing.dart';
 import 'package:visit_medina/features/Owner/Home/view.dart';
 import 'package:visit_medina/shared/components/navigator.dart';
@@ -49,10 +50,10 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
       child: BlocConsumer<AddEventCubit, AddEventStates>(
         listener: (context, state) {
           print(state);
-          if (state is AddEventOrPlaceSuccessState)
-            MotionToast.success(
-              description: Text("تم ارسال طلبك بنجاح"),
-            ).show(context);
+          if (state is AddEventOrPlaceSuccessState) {
+            navigateAndFinished(context, ActivityWaiting(title: widget.titleAppBar));
+          }
+
         },
         builder: (context, state) {
           return Form(
