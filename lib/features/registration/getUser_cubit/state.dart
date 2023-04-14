@@ -18,3 +18,14 @@ class GetUserErrorState extends GetUserStates {
   GetUserErrorState(this.error);
 }
 
+class UpdateProfileLoadingState extends GetUserStates {}
+
+class UpdateProfileSuccessState extends GetUserStates {}
+
+class UpdateProfileErrorState extends GetUserStates {
+  late final String error;
+
+  UpdateProfileErrorState(this.error);
+}
+
+

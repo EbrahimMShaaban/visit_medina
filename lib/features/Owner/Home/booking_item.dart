@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:visit_medina/models/OrdersModel.dart';
+import 'package:intl/intl.dart' as intl;
 import '../../../shared/components/components.dart';
 import '../../../shared/styles/colors.dart';
 import '../../../shared/styles/images.dart';
 import '../../../shared/styles/styles.dart';
 
 class BookingItem extends StatefulWidget {
-  const BookingItem({Key? key}) : super(key: key);
+  const BookingItem({Key? key, required this.ordersModel}) : super(key: key);
+  final OrdersModel ordersModel;
 
   @override
   State<BookingItem> createState() => _BookingItemState();
@@ -33,8 +35,9 @@ class _BookingItemState extends State<BookingItem> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-     Text("فندق المد ينة المنورة", style: AppTextStyles.bold
-          .copyWith(color: AppColors.green, fontSize: 19)),
+          Text("${widget.ordersModel.name_event}",
+              style: AppTextStyles.bold
+                  .copyWith(color: AppColors.green, fontSize: 19)),
           SizedBox(
             height: 10,
           ),
@@ -52,7 +55,7 @@ class _BookingItemState extends State<BookingItem> {
                   // ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: "3",
+                      text: "${widget.ordersModel.number}",
                       style: AppTextStyles.bold.copyWith(
                         color: AppColors.greyDark,
                         fontSize: 16,
@@ -74,7 +77,7 @@ class _BookingItemState extends State<BookingItem> {
                   // ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: "19/3/2023",
+                      text: "${widget.ordersModel.date}",
                       style: AppTextStyles.bold.copyWith(
                         color: AppColors.greyDark,
                         fontSize: 16,
@@ -96,7 +99,8 @@ class _BookingItemState extends State<BookingItem> {
                   // ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: "5:00 PM",
+                      text:
+                          "${intl.DateFormat("hh:mm a").format(widget.ordersModel.time!)}",
                       style: AppTextStyles.bold.copyWith(
                         color: AppColors.greyDark,
                         fontSize: 16,
@@ -109,16 +113,17 @@ class _BookingItemState extends State<BookingItem> {
               ),
             ],
           ),
-          SizedBox(height: 10,),
-
+          SizedBox(
+            height: 10,
+          ),
           Divider(height: 20, color: Colors.black),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(vertical: 10,horizontal: 15),
-              //  width: 200,
-              //  height: 100,
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                //  width: 200,
+                //  height: 100,
                 decoration: BoxDecoration(
                     color: AppColors.primarycolor,
                     borderRadius: BorderRadius.circular(20)),
@@ -133,10 +138,11 @@ class _BookingItemState extends State<BookingItem> {
                       // ),
                       children: <TextSpan>[
                         TextSpan(
-                          text:
-                          "300 رس",
-                          style: AppTextStyles.bold
-                              .copyWith(color: AppColors.white, fontSize: 16,),
+                          text: "${widget.ordersModel.price}",
+                          style: AppTextStyles.bold.copyWith(
+                            color: AppColors.white,
+                            fontSize: 16,
+                          ),
 
                           //  style: AppTextStyles.lrTitles
                         ),

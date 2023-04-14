@@ -29,4 +29,23 @@ class GetUserCubit extends Cubit<GetUserStates> {
       emit(GetUserErrorState(error.toString()));
     });
   }
+  updateDriverDate({
+    required String name,
+    required String email,
+    required  context,
+
+  }) {
+    emit(UpdateProfileLoadingState());
+
+    FirebaseFirestore.instance.collection('users').doc(UID).update({
+      'name': name,
+      'email': email,
+    }).then((value) {
+
+      emit(UpdateProfileSuccessState());
+      getUserData();
+    }).catchError((error) {
+      emit(UpdateProfileErrorState(error.toString()));
+    });
+  }
 }

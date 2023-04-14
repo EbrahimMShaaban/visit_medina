@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:visit_medina/features/Home/layout/state.dart';
+import 'package:visit_medina/features/Owner/Activities/get_cubit/state.dart';
 import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/images.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
+
+import '../../../models/commentsModel.dart';
+import 'get_cubit/cubit.dart';
 
 class CommentsScreen extends StatefulWidget {
   const CommentsScreen({Key? key}) : super(key: key);
@@ -15,24 +20,42 @@ class CommentsScreen extends StatefulWidget {
 class _CommentsScreenState extends State<CommentsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("التعليقات"),
+    return BlocProvider(
+      create: (context) => GetMyEventCubit()..getAllComments(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("التعليقات"),
+        ),
+        body: BlocConsumer<GetMyEventCubit, GetMyEventStates>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            List<CommentsModel> myComments =
+                GetMyEventCubit.get(context).myComments;
+
+            return state is GetAllCommentsLoadingState
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : SafeArea(
+                    child: ListView.builder(
+                    itemCount: myComments.length,
+                    itemBuilder: (context, index) {
+                      print(myComments.length);
+                      return ContainerAcceptOrReject(myComments: myComments[index],);
+                    },
+                  ));
+          },
+        ),
       ),
-      body: SafeArea(
-          child: ListView.builder(
-        itemCount: 2,
-        itemBuilder: (context, index) {
-          return ContainerAcceptOrReject();
-        },
-      )),
     );
   }
 }
 
 class ContainerAcceptOrReject extends StatefulWidget {
-  const ContainerAcceptOrReject({Key? key}) : super(key: key);
-
+  const ContainerAcceptOrReject({Key? key, required this.myComments}) : super(key: key);
+ final CommentsModel myComments ;
   @override
   State<ContainerAcceptOrReject> createState() =>
       _ContainerAcceptOrRejectState();
@@ -40,7 +63,8 @@ class ContainerAcceptOrReject extends StatefulWidget {
 
 class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
   @override
-  TextEditingController controller =TextEditingController();
+  TextEditingController controller = TextEditingController();
+
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -74,21 +98,29 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Ahmed ",
+                    "${widget.myComments.name_user}",
                     style: AppTextStyles.bold
                         .copyWith(color: AppColors.primarycolor, fontSize: 22),
                   ),
                   SizedBox(
                     height: 10,
                   ),
-
+                  Row(
+                    children: [
+                      Icon(Icons.star,color: Colors.yellow,),
+                      SizedBox(width: 5,),
+                      Text(
+                        "${widget.myComments.rating}",
+                        style: AppTextStyles.bold
+                            .copyWith(color: AppColors.primarycolor, fontSize: 20),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
+
           Divider(height: 20, color: Colors.black),
           RichText(
             text: TextSpan(
@@ -100,17 +132,17 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
               // ),
               children: <TextSpan>[
                 TextSpan(
-                  text:
-"الخدمة سيئة والفرش مب مريح",
-                  style: AppTextStyles.bold
-                      .copyWith(color: AppColors.greyDark, fontSize: 16,),
+                  text: "${widget.myComments.title}",
+                  style: AppTextStyles.bold.copyWith(
+                    color: AppColors.greyDark,
+                    fontSize: 16,
+                  ),
 
                   //  style: AppTextStyles.lrTitles
                 ),
               ],
             ),
           ),
-
           SizedBox(
             height: 20,
           ),
@@ -118,8 +150,7 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
             color: AppColors.primarycolor,
             text1: "رد",
             onPressed: () {
-              commentReply(context,controller);
-
+              commentReply(context, controller);
             },
             minheight: 50,
             minwidth: MediaQuery.of(context).size.width / 3,

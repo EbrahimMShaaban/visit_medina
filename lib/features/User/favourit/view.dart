@@ -22,7 +22,7 @@ class FavouriteScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: InkWell(
           onTap: () {
-            navigateTo(context, const EventDetails());
+            // navigateTo(context, const EventDetails(model: null,));
           },
           child: Container(
             height: 130,

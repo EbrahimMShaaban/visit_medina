@@ -52,6 +52,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
     required String event,
     required String type,
     required String? name,
+    required String? nameEvent,
   }) {
     emit(AddEventOrPlaceLoadingState());
     firebase_storage.FirebaseStorage.instance
@@ -75,6 +76,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
             date: date,
             event: event,
             name: name,
+            nameEvent: nameEvent,
             type: type,
             postImage: value);
       }).catchError((error) {
@@ -96,6 +98,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
     required String date,
     required String event,
     required String? name,
+    required String? nameEvent,
     required String type,
     String? postImage,
   }) {
@@ -111,6 +114,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
       'accept': accept,
       'price': price,
       'number': number,
+      'nameEvent': nameEvent,
       'time': time,
       'dateTime': dateTime,
       'date': date,

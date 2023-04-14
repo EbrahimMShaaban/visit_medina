@@ -13,6 +13,7 @@ class EventModel {
   String? postImage;
   String? type;
   String? name;
+  String? nameEvent;
 
   EventModel({
     this.address,
@@ -29,6 +30,7 @@ class EventModel {
     this.event,
     this.type,
     this.name,
+    this.nameEvent,
   });
 
   EventModel.fromJson(Map<String, dynamic> json) {
@@ -46,6 +48,7 @@ class EventModel {
     event = json['event'];
     type = json['type'];
     name = json['name'];
+    nameEvent = json['nameEvent'];
   }
 
   Map<String, dynamic> toMap() {
@@ -64,6 +67,7 @@ class EventModel {
       'postImage': postImage,
       'type': type,
       'name': name,
+      'nameEvent': nameEvent,
     };
   }
 }
