@@ -37,6 +37,8 @@ class GetEventCubit extends Cubit<GetEventStates> {
             time: element["time"],
             price: element["price"],
             name: element["name"],
+            nameEvent: element["nameEvent"],
+
             number: element["number"],
             description: element["description"],
             event: element["event"],
