@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:visit_medina/features/Owner/Activities/get_cubit/state.dart';
 import 'package:visit_medina/features/Owner/Home/view.dart';
 
 import 'package:visit_medina/shared/components/components.dart';
@@ -11,6 +12,7 @@ import 'package:visit_medina/shared/styles/styles.dart';
 import '../../../models/addeventmodel.dart';
 import '../../administrator/Accept or reject/get_cubit/cubit.dart';
 import '../../administrator/Accept or reject/get_cubit/state.dart';
+import 'get_cubit/cubit.dart';
 
 class UnderProcessing extends StatefulWidget {
   const UnderProcessing({Key? key}) : super(key: key);
@@ -24,23 +26,23 @@ class _UnderProcessingState extends State<UnderProcessing> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-      GetEventCubit()
-        ..getEvent(),
+      GetMyEventCubit()
+        ..getMyEvent(),
       child: Scaffold(
         appBar: AppBar(
           title: Text("طلباتى"),
         ),
-        body: BlocConsumer<GetEventCubit, GetEventStates>(
+        body: BlocConsumer<GetMyEventCubit, GetMyEventStates>(
           listener: (context, state) {
             // TODO: implement listener
           },
           builder: (context, state) {
-            List<EventModel> eventModel = GetEventCubit
+            List<EventModel> eventModel = GetMyEventCubit
                 .get(context)
-                .posts;
+                .myPosts;
 
             return SafeArea(
-                child: state is! GetEventOrPlaceSuccessState
+                child: state is GetMyEventOrPlaceLoadingState
                     ? Center(child: CircularProgressIndicator(),)
                     : ListView.builder(
                   itemCount: eventModel.length,
