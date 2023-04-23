@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:visit_medina/features/administrator/Accept%20or%20reject/get_cubit/state.dart';
 
+import '../../../../models/OrdersModel.dart';
 import '../../../../models/addeventmodel.dart';
 import '../../../../shared/components/end_point.dart';
 
@@ -14,9 +15,9 @@ class GetEventCubit extends Cubit<GetEventStates> {
 
   static GetEventCubit get(context) => BlocProvider.of(context);
   List<EventModel> posts = [];
+  List<OrdersModel> allOrders = [];
 
-  // List<String> postsId = [];
-  // List<int> likes = [];
+
 
   void getEvent() {
     emit(GetEventOrPlaceLoadingState());
@@ -58,6 +59,30 @@ class GetEventCubit extends Cubit<GetEventStates> {
     });
   }
 
+
+  void getAllOrderAdmin() {
+    emit(GetAllOrderAdminLoadingState());
+    print(UID);
+    FirebaseFirestore.instance.collection('reservation').get().then((value) {
+      print(value.docs.toString());
+      value.docs.forEach((element) {
+        allOrders.add(OrdersModel(
+          uId: element["uIdUser"],
+          name_event: element["name_event"],
+          date: element["date"],
+          number: element["number"],
+          price: element["price"],
+          time: element["time"].toDate(),
+          dateTime: element["dateTime"],
+          uIdUser: element["uIdUser"],
+        ));
+      });
+      emit(GetAllOrderAdminSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(GetAllOrderAdminErrorState(error.toString()));
+    });
+  }
   void AcceptEvent(String docUid) {
     print(UID);
     emit(AcceptEventLoadingState());

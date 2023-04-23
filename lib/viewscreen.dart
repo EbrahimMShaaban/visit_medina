@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:visit_medina/features/User/favourit/view.dart';
 import 'package:visit_medina/features/registration/regist_screen/view.dart';
 import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/components/end_point.dart';

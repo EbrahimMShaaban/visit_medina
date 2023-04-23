@@ -7,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:visit_medina/features/User/Events/get_cubit/state.dart';
 import 'package:visit_medina/features/registration/getUser_cubit/cubit.dart';
 
+import '../../../../models/OrdersModel.dart';
 import '../../../../models/addeventmodel.dart';
 import '../../../../shared/components/end_point.dart';
 
@@ -15,10 +16,11 @@ class GetAllEventCubit extends Cubit<GetAllEventStates> {
 
   static GetAllEventCubit get(context) => BlocProvider.of(context);
   List<EventModel> allPosts = [];
+  List<EventModel> allFavorite = [];
+  List<OrdersModel> myOrders = [];
 
   void getAllEvent(String? event) {
     emit(GetAllEventOrPlaceLoadingState());
-
     FirebaseFirestore.instance
         .collection('posts')
         .where(
@@ -28,32 +30,56 @@ class GetAllEventCubit extends Cubit<GetAllEventStates> {
         .where("event", isEqualTo: event)
         .get()
         .then((value) {
-      print(value.docs.toString());
-      value.docs.forEach((element) {
-        allPosts.add(EventModel(
-            accept: element["accept"],
-            address: element["address"],
-            postImage: element["postImage"],
-            type: element["type"],
-            time: element["time"],
-            price: element["price"],
-            name: element["name"],
-            nameEvent: element["nameEvent"],
 
-            number: element["number"],
-            description: element["description"],
-            event: element["event"],
-            date: element["date"],
-            docuId: element.id,
-            uId: element["uId"]));
+
+      value.docs.forEach((element) async{
+        bool? favourite;
+      await element.reference
+            .collection("favourite")
+            .where("uid", isEqualTo: UID)
+            .get()
+            .then((value) => value.docs.forEach((elements)async {
+
+                  favourite = elements["Favourite"];
+
+                  print("1111111111111111111111111111111111111111111111111111");
+                  print(favourite);
+                  print("1111111111111111111111111111111111111111111111111111");
+
+                })).catchError((error) {
+          print(error.toString());
+        });
+
+      allPosts.add(EventModel(
+          accept: element["accept"],
+          address: element["address"],
+          postImage: element["postImage"],
+          type: element["type"],
+          time: element["time"],
+          price: element["price"],
+          name: element["name"],
+          nameEvent: element["nameEvent"],
+          number: element["number"],
+          description: element["description"],
+          event: element["event"],
+          date: element["date"],
+          docuId: element.id,
+          uId: element["uId"],
+          favorite: favourite??false,
+        ));
+        print("00000000000000");
+        print(favourite);
+        print("00000000000000000000000");
+        emit(GetAllEventOrPlaceSuccessState());
+
+
       });
-      emit(GetAllEventOrPlaceSuccessState());
+
     }).catchError((error) {
       print(error.toString());
       emit(GetAllEventOrPlaceErrorState(error.toString()));
     });
   }
-
 
   void reservation({
     required String? dateTime,
@@ -66,10 +92,7 @@ class GetAllEventCubit extends Cubit<GetAllEventStates> {
   }) {
     emit(ReservationLoadingState());
 
-
-    FirebaseFirestore.instance
-        .collection('reservation')
-        .add({
+    FirebaseFirestore.instance.collection('reservation').add({
       'name_event': name_event,
       'uIdUser': UID,
       'price': price,
@@ -78,13 +101,36 @@ class GetAllEventCubit extends Cubit<GetAllEventStates> {
       'dateTime': dateTime,
       'date': date,
       'uIdOwner': uIdOwner,
-    })
-        .then((value) {
+    }).then((value) {
       emit(ReservationSuccessState());
     }).catchError((error) {
       emit(ReservationErrorState(error));
     });
-  }  void rating({
+  }
+  void getAllOrderUser() {
+    emit(GetAllOrderUserLoadingState());
+    print(UID);
+    FirebaseFirestore.instance.collection('reservation').where("uIdUser" ,isEqualTo: UID,).get().then((value) {
+      print(value.docs.toString());
+      value.docs.forEach((element) {
+        myOrders.add(OrdersModel(
+          uId: element["uIdUser"],
+          name_event: element["name_event"],
+          date: element["date"],
+          number: element["number"],
+          price: element["price"],
+          time: element["time"].toDate(),
+          dateTime: element["dateTime"],
+          uIdUser: element["uIdUser"],
+        ));
+      });
+      emit(GetAllOrderUserSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(GetAllOrderUserErrorState(error.toString()));
+    });
+  }
+  void rating({
     required String? name_event,
     required double? rating,
     required String? title,
@@ -92,24 +138,75 @@ class GetAllEventCubit extends Cubit<GetAllEventStates> {
   }) {
     emit(RatingLoadingState());
 
-
-    FirebaseFirestore.instance
-        .collection('rating')
-        .add({
+    FirebaseFirestore.instance.collection('rating').add({
       'name_event': name_event,
       'name_user': NameUser,
       'uIdUser': UID,
       'rating': rating,
       'title': title,
       'uIdOwner': uIdOwner,
-    })
-        .then((value) {
+    }).then((value) {
       emit(RatingSuccessState());
     }).catchError((error) {
       emit(RatingErrorState(error));
     });
   }
 
+  void postFavourite(String postId, bool favourite) {
+    emit(FavouriteLoadingState());
 
+    FirebaseFirestore.instance
+        .collection('posts')
+        .doc(postId)
+        .collection('favourite')
+        .doc(UID)
+        .set({
+      'Favourite': favourite,
+      'uid': UID,
+    }).then((value) {
+      emit(FavouriteSuccessState());
+    }).catchError((error) {
+      emit(FavouriteErrorState(error.toString()));
+    });
+  }
 
+  void getAllFavorite() {
+    emit(GetAllFavoriteLoadingState());
+
+    FirebaseFirestore.instance.collection('posts').get().then((value) {
+      print(value.docs.toString());
+      value.docs.forEach((element) {
+        element.reference
+            .collection("favourite")
+            .where("uid", isEqualTo: UID)
+            .where("Favourite", isEqualTo: true)
+            .get()
+            .then((value) {
+          print(value.docs.length);
+          value.docs.forEach((elements) {
+            allFavorite.add(EventModel(
+              favorite: true,
+                accept: element["accept"],
+                address: element["address"],
+                postImage: element["postImage"],
+                type: element["type"],
+                time: element["time"],
+                price: element["price"],
+                name: element["name"],
+                nameEvent: element["nameEvent"],
+                number: element["number"],
+                description: element["description"],
+                event: element["event"],
+                date: element["date"],
+                docuId: element.id,
+                uId: element["uId"]));
+          });
+          emit(GetAllFavoriteSuccessState());
+        });
+      });
+    }).catchError((error) {
+      print(error.toString());
+      emit(GetAllFavoriteErrorState(error.toString()));
+    });
+  }
 }

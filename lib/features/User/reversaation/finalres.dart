@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:visit_medina/features/User/reversaation/payment.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:visit_medina/features/User/reversaation/payment_card.dart';
 
 import '../../../models/addeventmodel.dart';
@@ -56,7 +56,7 @@ class FinalReserv extends StatelessWidget {
             child: Column(
               children: [
                 Hero(
-                  tag: Hero,
+                  tag:  'hero-custom-tween',
                   child: Image.network(
                     "${model.postImage}",
                     width: MediaQueryHelper.sizeFromWidth(context, 1),
@@ -74,19 +74,10 @@ class FinalReserv extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      // Column(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      //   children: [
-                      //     Icon(Icons.location_on_outlined),
-                      //     Text('سكة حديد الحجاز')
-                      //   ],
-                      // ),
-                      // VerticalDivider(
-                      //   thickness: 1,
-                      // ),
+
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [Icon(Icons.access_time), Text("$time")],
+                        children: [Icon(Icons.access_time), Text(intl.DateFormat('hh:mm a').format(time!))],
                       ),
                       VerticalDivider(
                         thickness: 1,
@@ -106,7 +97,7 @@ class FinalReserv extends StatelessWidget {
                         children: [
                           Icon(Icons.person),
                           Text(
-                            "$personsnum" 'عدد الزوار',
+                            "$personsnum" '  عدد الزوار',
                             maxLines: 2,
                             overflow: TextOverflow.clip,
                           )
@@ -176,7 +167,7 @@ class FinalReserv extends StatelessWidget {
                           String? price = model.price;
                           GetAllEventCubit.get(context).reservation(
                               dateTime: nowDateTime.toString(),
-                              name_event: model.address,
+                              name_event: model.nameEvent,
                               price: price,
                               number: personsnum,
                               time: time,

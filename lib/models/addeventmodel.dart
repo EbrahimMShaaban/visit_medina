@@ -4,6 +4,7 @@ class EventModel {
   String? docuId;
   String? description;
   bool? accept;
+  bool? favorite;
   String? price;
   String? number;
   String? time;
@@ -21,6 +22,7 @@ class EventModel {
     this.docuId,
     this.description,
     this.accept,
+    this.favorite,
     this.price,
     this.number,
     this.time,
@@ -39,6 +41,7 @@ class EventModel {
     docuId = json['docuId'];
     description = json['description'];
     accept = json['accept'];
+    favorite = json['Favourite'];
     price = json['price'];
     number = json['number'];
     time = json['time'];
@@ -68,6 +71,7 @@ class EventModel {
       'type': type,
       'name': name,
       'nameEvent': nameEvent,
+      'Favourite': favorite,
     };
   }
 }

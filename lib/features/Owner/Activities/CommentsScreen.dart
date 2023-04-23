@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:visit_medina/features/Home/layout/state.dart';
 import 'package:visit_medina/features/Owner/Activities/get_cubit/state.dart';
 import 'package:visit_medina/shared/components/components.dart';
@@ -18,6 +19,8 @@ class CommentsScreen extends StatefulWidget {
 }
 
 class _CommentsScreenState extends State<CommentsScreen> {
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -28,6 +31,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
         ),
         body: BlocConsumer<GetMyEventCubit, GetMyEventStates>(
           listener: (context, state) {
+
+            if (state is postAllCommentsSuccessState) {
+              MotionToast.success(
+                description: Text("تم ارسال ردك"),
+              ).show(context);
+              controller.clear();
+              Navigator.pop(context);
+            }
             // TODO: implement listener
           },
           builder: (context, state) {
@@ -43,7 +54,66 @@ class _CommentsScreenState extends State<CommentsScreen> {
                     itemCount: myComments.length,
                     itemBuilder: (context, index) {
                       print(myComments.length);
-                      return ContainerAcceptOrReject(myComments: myComments[index],);
+                      return ContainerAcceptOrReject(
+                        myComments: myComments[index],
+                        ontap: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  backgroundColor: AppColors.white,
+                                  title: const Center(child: Text('رد')),
+                                  titleTextStyle: AppTextStyles.bold
+                                      .apply(color: AppColors.black),
+                                  //titlePadding: const EdgeInsets.symmetric(vertical: 20),
+                                  // elevation: 10,
+                                  insetPadding: const EdgeInsets.all(10),
+                                  shape: const RoundedRectangleBorder(
+                                      side: BorderSide(
+                                          //color: AppColors.pink,
+                                          ),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15))),
+                                  content: SizedBox(
+                                    width: 100,
+                                    child: SingleChildScrollView(
+                                      child: TextFieldTemplate(
+                                        hintText: 'رد على التعليق',
+                                        icon: null,
+                                        controller: controller,
+                                      ),
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    state is postAllCommentsLoadingState
+                                        ? Center(
+                                            child: CircularProgressIndicator(),
+                                          )
+                                        : Center(
+                                            child: ButtonTemplate(
+                                              minwidth: 100,
+                                              color: AppColors.primarycolor,
+                                              onPressed: () {
+                                                print("ssssdddddddddddddddddddddddddddddddddddddddds");
+                                                // GetMyEventCubit.get(context)
+                                                //     .postAllComments(
+                                                //         title: controller.text,
+                                                //         doc: myComments[index].docuId);
+
+                                                controller.clear();
+                                                Navigator.pop(context);
+                                                MotionToast.success(
+                                                  description: Text("تم ارسال ردك"),
+                                                ).show(context);
+                                              },
+                                              text1: 'ارسال',
+                                            ),
+                                          ),
+                                  ],
+                                );
+                              });
+                        },
+                      );
                     },
                   ));
           },
@@ -54,8 +124,13 @@ class _CommentsScreenState extends State<CommentsScreen> {
 }
 
 class ContainerAcceptOrReject extends StatefulWidget {
-  const ContainerAcceptOrReject({Key? key, required this.myComments}) : super(key: key);
- final CommentsModel myComments ;
+  const ContainerAcceptOrReject(
+      {Key? key, required this.myComments, required this.ontap})
+      : super(key: key);
+  final CommentsModel myComments;
+
+  final Function()? ontap;
+
   @override
   State<ContainerAcceptOrReject> createState() =>
       _ContainerAcceptOrRejectState();
@@ -63,8 +138,6 @@ class ContainerAcceptOrReject extends StatefulWidget {
 
 class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
   @override
-  TextEditingController controller = TextEditingController();
-
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -107,12 +180,17 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.star,color: Colors.yellow,),
-                      SizedBox(width: 5,),
+                      Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
                       Text(
                         "${widget.myComments.rating}",
-                        style: AppTextStyles.bold
-                            .copyWith(color: AppColors.primarycolor, fontSize: 20),
+                        style: AppTextStyles.bold.copyWith(
+                            color: AppColors.primarycolor, fontSize: 20),
                       ),
                     ],
                   ),
@@ -120,7 +198,6 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
               ),
             ],
           ),
-
           Divider(height: 20, color: Colors.black),
           RichText(
             text: TextSpan(
@@ -149,12 +226,12 @@ class _ContainerAcceptOrRejectState extends State<ContainerAcceptOrReject> {
           ButtonTemplate(
             color: AppColors.primarycolor,
             text1: "رد",
-            onPressed: () {
-              commentReply(context, controller);
-            },
+            onPressed:
+              widget.ontap,
+
             minheight: 50,
             minwidth: MediaQuery.of(context).size.width / 3,
-          )
+          ),
         ],
       ),
     );

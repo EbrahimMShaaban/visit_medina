@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:visit_medina/features/User/Events/get_cubit/state.dart';
+import 'package:visit_medina/features/User/view.dart';
 import 'package:visit_medina/features/administrator/Activities/postEvent_cubit/state.dart';
 import 'package:visit_medina/features/registration/getUser_cubit/state.dart';
 import 'package:visit_medina/shared/components/components.dart';
@@ -47,6 +49,17 @@ class _ProfilUserState extends State<ProfilUser> {
       child: BlocConsumer<GetUserCubit, GetUserStates>(
         listener: (context, state) {
           // TODO: implement listener
+          if (state is UpdateProfileSuccessState){
+            navigateTo(context, VisitorView());
+            MotionToast.success(
+              description: Text("تم تعد يل الملف الشخصى بنجاح"),
+            ).show(context);
+          }
+
+          if (state is DeleteProfileSuccessState){
+
+            signout(context);
+          }
           print(state);
         },
         builder: (context, state) {
@@ -111,8 +124,7 @@ class _ProfilUserState extends State<ProfilUser> {
                                     showMyDialog(
                                         context: context,
                                         ontap: () {
-                                          navigateAndFinished(
-                                              context, RegistScreen());
+                                          GetUserCubit.get(context).deleteProfileDate();
                                         },
                                         message: "حذف الملف الشخصى");
                                   }),

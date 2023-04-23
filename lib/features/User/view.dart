@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:visit_medina/features/User/favourit/view.dart';
+import 'package:visit_medina/features/User/reversaation/reversation_View.dart';
 import 'package:visit_medina/features/registration/getUser_cubit/cubit.dart';
 import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/components/navigator.dart';
 import 'package:visit_medina/shared/styles/colors.dart';
 import 'package:visit_medina/shared/styles/styles.dart';
-
 import '../../../shared/styles/images.dart';
 import '../../models/user_model.dart';
-import '../Owner/Home/bookings.dart';
 import '../registration/getUser_cubit/state.dart';
-import '../registration/regist_screen/view.dart';
 import 'Events/view.dart';
+import 'Favourite/view.dart';
 import 'Profile/view.dart';
 
 class VisitorView extends StatelessWidget {
@@ -121,7 +119,7 @@ class VisitorView extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      navigateTo(context, BookingScreen());
+                      navigateTo(context, ReversationUserScreen());
                     },
                     child: Container(
                       margin: EdgeInsets.only(top: 10, bottom: 20),
