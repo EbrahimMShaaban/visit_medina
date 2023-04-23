@@ -124,7 +124,10 @@ class AddEventCubit extends Cubit<AddEventStates> {
       'name': name,
     })
         .then((value) {
+          value.collection('favourite').add({});
+
       emit(AddEventOrPlaceSuccessState());
+
     }).catchError((error) {
       emit(AddEventOrPlaceErrorState(error));
     });

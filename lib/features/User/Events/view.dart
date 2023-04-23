@@ -44,13 +44,14 @@ class ActivityView extends StatelessWidget {
           },
           builder: (context, state) {
             List<EventModel> allPosts = GetAllEventCubit.get(context).allPosts;
-
             return state is GetAllEventOrPlaceLoadingState
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
                 : ListView.builder(
                     itemBuilder: (context, index) {
+                      print(allPosts[index].favorite);
+
                       return ActivityItem(model: allPosts[index],);
                     },
                     itemCount: allPosts.length);

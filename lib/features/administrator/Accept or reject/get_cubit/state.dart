@@ -28,6 +28,15 @@ class RemoveEventErrorState extends GetEventStates {
 
   RemoveEventErrorState(this.error);
 }
+class GetAllOrderAdminLoadingState extends GetEventStates {}
+
+class GetAllOrderAdminSuccessState extends GetEventStates {}
+
+class GetAllOrderAdminErrorState extends GetEventStates {
+  late final String error;
+
+  GetAllOrderAdminErrorState(this.error);
+}
 
 
 class PostImagePickedSuccessState extends GetEventStates {}

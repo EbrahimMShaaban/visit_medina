@@ -31,4 +31,13 @@ class GetAllCommentsErrorState extends GetMyEventStates {
 
   GetAllCommentsErrorState(this.error);
 }
+class postAllCommentsLoadingState extends GetMyEventStates {}
+
+class postAllCommentsSuccessState extends GetMyEventStates {}
+
+class postAllCommentsErrorState extends GetMyEventStates {
+  late final String error;
+
+  postAllCommentsErrorState(this.error);
+}
 

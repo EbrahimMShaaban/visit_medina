@@ -52,7 +52,7 @@ class EventDetails extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 5),
               child: Hero(
 
-                tag: Hero,
+                tag:  'hero-custom-tween',
                 child: Image.network(
                   "${model.postImage}",
                   fit: BoxFit.cover,

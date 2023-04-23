@@ -1,14 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:visit_medina/features/Home/AppLayout.dart';
-import 'package:visit_medina/features/User/Profile/view.dart';
-import 'package:visit_medina/features/registration/Login/login_cubit/cubit.dart';
-import 'package:visit_medina/features/registration/regist_screen/view.dart';
 import 'package:visit_medina/features/welcamScreen/view.dart';
 import 'package:visit_medina/shared/components/end_point.dart';
 import 'package:visit_medina/shared/network/local/shared_preferences.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:visit_medina/shared/styles/theme.dart';
 import 'package:visit_medina/viewscreen.dart';

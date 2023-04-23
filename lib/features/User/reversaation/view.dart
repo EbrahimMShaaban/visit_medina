@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:horizontal_calendar/horizontal_calendar.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:visit_medina/features/User/Events/get_cubit/cubit.dart';
 import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/components/navigator.dart';
@@ -56,7 +57,7 @@ class _ReversationViewState extends State<ReversationView> {
           child: Column(
             children: [
               Hero(
-                tag: Hero,
+                tag:  'hero-custom-tween',
                 child: Image.network(
                   "${widget.model.postImage}",
                   width: MediaQueryHelper.sizeFromWidth(context, 1),
@@ -209,19 +210,20 @@ class _ReversationViewState extends State<ReversationView> {
                     color: AppColors.green,
                     text1: 'متابعة الحجز',
                     onPressed: () {
-                      print(_date);
-                      print(_dateTime);
-                      print(
-                          intl.DateFormat('dd MMM \n yyyy').format(_dateTime!));
-                      print(personsnum);
-                      navigateTo(
+                      if (_date ==null){
+
+                      MotionToast.error(
+                        description: Text("يجب تحد يد التاريخ"),
+                      ).show(context);
+                    }else
+                      {navigateTo(
                           context,
                           FinalReserv(
                             model: widget.model,
                             date: _date,
                             personsnum: personsnum,
                             time: _dateTime,
-                          ));
+                          ));}
                     }),
               )
             ],

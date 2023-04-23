@@ -53,10 +53,10 @@ class GetMyEventCubit extends Cubit<GetMyEventStates> {
     });
   }
 
-  void getAllOrder() {
+  void getAllOrderOwner() {
     emit(GetAllOrderLoadingState());
     print(UID);
-    FirebaseFirestore.instance.collection('reservation').get().then((value) {
+    FirebaseFirestore.instance.collection('reservation').where("uIdOwner" ,isEqualTo: UID,).get().then((value) {
       print(value.docs.toString());
       value.docs.forEach((element) {
         myOrders.add(OrdersModel(
@@ -80,7 +80,7 @@ class GetMyEventCubit extends Cubit<GetMyEventStates> {
   void getAllComments() {
     emit(GetAllCommentsLoadingState());
 
-    FirebaseFirestore.instance.collection('rating').get().then((value) {
+    FirebaseFirestore.instance.collection('rating').where("uIdOwner" ,isEqualTo: UID,).get().then((value) {
       print(value.docs.toString());
       value.docs.forEach((element) {
         myComments.add(CommentsModel(
@@ -95,6 +95,26 @@ class GetMyEventCubit extends Cubit<GetMyEventStates> {
     }).catchError((error) {
       print(error.toString());
       emit(GetAllCommentsErrorState(error.toString()));
+    });
+  }
+
+
+  void postAllComments({
+
+    required String? title,
+    required String? doc,
+  }) {
+    print("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssccccccccccccccccccccccccccc");
+    emit(postAllCommentsLoadingState());
+
+    FirebaseFirestore.instance.collection('rating').doc(doc).collection("Comments").add({
+      'title': title,
+      'uId': UID,
+
+    }).then((value) {
+      emit(postAllCommentsSuccessState());
+    }).catchError((error) {
+      emit(postAllCommentsErrorState(error));
     });
   }
 }

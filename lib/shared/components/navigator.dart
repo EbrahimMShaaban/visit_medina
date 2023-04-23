@@ -18,6 +18,7 @@ void signout(context) {
   CacheHelper.removeToken(key: 'uId').then((value) {
     CacheHelper.removeToken(key: 'type');
     CacheHelper.removeToken(key: 'uId');
+    CacheHelper.removeToken(key: 'name');
     navigateAndFinished(context, RegistScreen());
   });
 }

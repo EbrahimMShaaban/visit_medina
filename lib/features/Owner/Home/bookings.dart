@@ -22,7 +22,7 @@ class _BookingScreenState extends State<BookingScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GetMyEventCubit()..getAllOrder(),
+      create: (context) => GetMyEventCubit()..getAllOrderOwner(),
       child: Scaffold(
         appBar: AppBar(
           title: Text("الحجوزات"),
@@ -42,7 +42,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     child: ListView.builder(
                     itemCount: myOrders.length,
                     itemBuilder: (context, index) {
-                    DateTime? time = myOrders[index]!.time;
+                    DateTime? time = myOrders[index].time;
                       print(
                           intl.DateFormat('HH:MM').format(time!));
                       return BookingItem(

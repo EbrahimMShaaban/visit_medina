@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:visit_medina/shared/components/components.dart';
 import 'package:visit_medina/shared/components/constants.dart';
 import 'package:visit_medina/shared/styles/images.dart';
@@ -122,7 +123,12 @@ class _RatingViewState extends State<RatingView> {
                     listener: (context, state) {
                       print(state);
                       if (state is RatingSuccessState) {
-                        print("object");
+                        MotionToast.success(
+                          description: Text("تم ارسال رأيك"),
+
+                        ).show(context);
+                        controller.clear();
+
                       }
                     },
                     builder: (context, state) {
