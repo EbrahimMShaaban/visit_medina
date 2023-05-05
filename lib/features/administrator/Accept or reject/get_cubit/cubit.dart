@@ -28,31 +28,49 @@ class GetEventCubit extends Cubit<GetEventStates> {
         .get()
         .then((value) {
       print(value.docs.toString());
-      value.docs.forEach((element) {
-        print(element.id + "Dddddddddddd");
-        posts.add(EventModel(
-            accept: element["accept"],
-            address: element["address"],
-            postImage: element["postImage"],
-            type: element["type"],
-            time: element["time"],
-            price: element["price"],
-            name: element["name"],
-            nameEvent: element["nameEvent"],
 
-            number: element["number"],
-            description: element["description"],
-            event: element["event"],
-            date: element["date"],
-            docuId: element.id,
-            uId: element["uId"]));
-        // element.reference.collection('posts').get().then((value) {
-        //   // likes.add(value.docs.length);
-        //   // postsId.add(element.id);
-        //
-        // }).catchError((error) {});
+      value.docs.forEach((element) async{
+        bool? favourite;
+        await element.reference
+            .collection("favourite")
+            .where("uid", isEqualTo: UID)
+            .get()
+            .then((value) => value.docs.forEach((elements)async {
+
+          favourite = elements["Favourite"];
+
+          print("1111111111111111111111111111111111111111111111111111");
+          print(favourite);
+          print("1111111111111111111111111111111111111111111111111111");
+
+        })).catchError((error) {
+          print(error.toString());
+        });
+
+        posts.add(EventModel(
+          accept: element["accept"],
+          address: element["address"],
+          postImage: element["postImage"],
+          type: element["type"],
+          time: element["time"],
+          price: element["price"],
+          name: element["name"],
+          nameEvent: element["nameEvent"],
+          number: element["number"],
+          description: element["description"],
+          event: element["event"],
+          date: element["date"],
+          docuId: element.id,
+          uId: element["uId"],
+          favorite: favourite??false,
+        ));
+        print("00000000000000");
+        print(favourite);
+        print("00000000000000000000000");
+
+        emit(GetEventOrPlaceSuccessState());
+
       });
-      emit(GetEventOrPlaceSuccessState());
     }).catchError((error) {
       print(error.toString());
       emit(GetEventOrPlaceErrorState(error.toString()));
