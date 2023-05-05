@@ -114,15 +114,15 @@ class HomeAdmin extends StatelessWidget {
                         onPressed: () {
                           navigateTo(context, ReportScreen());
                         }),
-                    TYPE == "admin"
-                        ? ButtonTemplate(
-                            color: AppColors.greenlight,
-                            colortext: AppColors.green,
-                            text1: "اضافة مشرف",
-                            onPressed: () {
-                              navigateTo(context, AddAdminScreen());
-                            })
-                        : SizedBox(),
+                    // TYPE == "admin"
+                    //     ? ButtonTemplate(
+                    //         color: AppColors.greenlight,
+                    //         colortext: AppColors.green,
+                    //         text1: "اضافة مشرف",
+                    //         onPressed: () {
+                    //           navigateTo(context, AddAdminScreen());
+                    //         })
+                    //     : SizedBox(),
                     SizedBox(
                       height: 30,
                     ),
