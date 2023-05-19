@@ -36,8 +36,6 @@ class RegisterCubit extends Cubit<RegisterStates> {
         type: type,
         uId: value.user!.uid,
       );
-      // userModel = UserModel.fromJson(value.data()!);
-
       emit(RegisterSuccessState(value.user!.uid));
     }).catchError((error) {
       emit(RegisterErrorState(error.toString()));

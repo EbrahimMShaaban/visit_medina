@@ -27,6 +27,7 @@ class Activities extends StatefulWidget {
 
 class _ActivitiesState extends State<Activities> {
   TextEditingController controllerAddres = TextEditingController();
+  TextEditingController controllerLinkAddress = TextEditingController();
   TextEditingController controllerNameEvent = TextEditingController();
   TextEditingController controllerdescription = TextEditingController();
   TextEditingController controllernumber = TextEditingController();
@@ -219,6 +220,63 @@ class _ActivitiesState extends State<Activities> {
                                     },
                                     cursorColor: AppColors.blue,
                                     controller: controllerAddres,
+                                    decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        filled: true,
+                                        fillColor: AppColors.greenlight,
+
+                                        // labelStyle: AppTextStyles.hittext,
+                                        // hintStyle: AppTextStyles.hittext,
+                                        enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
+                                        errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))))),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                                flex: 1,
+                                child: Text(
+                                  'رابط العنوان:',
+                                  style: AppTextStyles.w800.copyWith(
+                                      color: AppColors.primarycolor,
+                                      fontSize: 15),
+                                )),
+                            Expanded(
+                              flex: 3,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0, vertical: 10),
+                                child: TextFormField(
+                                    validator: (String? value) {
+                                      if (value!.isEmpty) {
+                                        return 'الارجاء ادخال العنوان ';
+                                      }
+                                      return null;
+                                    },
+                                    cursorColor: AppColors.blue,
+                                    controller: controllerLinkAddress,
                                     decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         filled: true,
@@ -616,7 +674,7 @@ class _ActivitiesState extends State<Activities> {
                                     ).show(context);
                                   } else {
                                     AddEventCubit.get(context)
-                                        .uploadPostImage(
+                                        .uploadPostImage(linkAddress: controllerLinkAddress.text,
                                         name: NameUser,
                                         nameEvent:
                                         controllerNameEvent.text,

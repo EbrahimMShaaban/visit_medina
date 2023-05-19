@@ -42,10 +42,6 @@ class GetAllEventCubit extends Cubit<GetAllEventStates> {
 
                   favourite = elements["Favourite"];
 
-                  print("1111111111111111111111111111111111111111111111111111");
-                  print(favourite);
-                  print("1111111111111111111111111111111111111111111111111111");
-
                 })).catchError((error) {
           print(error.toString());
         });
@@ -65,6 +61,7 @@ class GetAllEventCubit extends Cubit<GetAllEventStates> {
           date: element["date"],
           docuId: element.id,
           uId: element["uId"],
+        linkAddress: element["linkAddress"],
           favorite: favourite??false,
         ));
         print("00000000000000");
@@ -191,7 +188,9 @@ class GetAllEventCubit extends Cubit<GetAllEventStates> {
                 postImage: element["postImage"],
                 type: element["type"],
                 time: element["time"],
+                linkAddress: element["linkAddress"],
                 price: element["price"],
+
                 name: element["name"],
                 nameEvent: element["nameEvent"],
                 number: element["number"],

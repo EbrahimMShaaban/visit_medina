@@ -11,7 +11,9 @@ class GetAllEventOrPlaceErrorState extends GetAllEventStates {
   late final String error;
 
   GetAllEventOrPlaceErrorState(this.error);
-}class GetAllFavoriteLoadingState extends GetAllEventStates {}
+}
+
+class GetAllFavoriteLoadingState extends GetAllEventStates {}
 
 class GetAllFavoriteSuccessState extends GetAllEventStates {}
 

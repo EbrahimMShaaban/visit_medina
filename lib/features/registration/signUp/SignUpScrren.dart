@@ -31,6 +31,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Places? _character = Places.user;
   String type = "user";
 
+  bool validateStructure(String value) {
+    String pattern =
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regExp = RegExp(pattern);
+    return regExp.hasMatch(value);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -68,19 +76,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
               ),
               TextFieldTemplate(
-                hintText: "كلمة المرور",
-                controller: passwordcontroller,isPassword: true,
-                icon: Icon(Icons.lock),
-                validator: (String? value) {
-                  if (value!.isEmpty) {
-                    return 'الرجاء ادخال كلمة المرور';
-                  }
-                  return null;
-                },
-              ),
+                  hintText: "كلمة المرور",
+                  controller: passwordcontroller,
+                  isPassword: true,
+                  icon: Icon(Icons.lock),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'الرجاء ادخال كلمة المرور ';
+                    } else if (value.length < 5) {
+                      return 'يجب ان تتكون كلمة المرور علي الاقل من ثمانيه خانات';
+                    } else if (!validateStructure(value)) {
+                      return 'يجب ان تحتوى كلمة المرور على ثمانيه خانات  \nوأحرف الكبيرة وأحرف الصغيرة ورموز @#%&* ';
+                    }
+                  }),
               TextFieldTemplate(
                 hintText: "تاكيد كلمة المرور",
-                controller: password2controller,isPassword: true,
+                controller: password2controller,
+                isPassword: true,
                 validator: (String? value) {
                   if (passwordcontroller.text != password2controller.text) {
                     return 'كلمة المرور غير متطابقة';
@@ -143,7 +155,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   if (state is RegisterSuccessState) {
                     CacheHelper.saveData(key: 'uId', value: state.uid)
                         .then((value) {
-
                       type == "owner"
                           ? navigateAndFinished(context, HomeOwner())
                           : navigateAndFinished(context, VisitorView());
