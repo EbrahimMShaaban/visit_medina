@@ -12,6 +12,7 @@ import '../../../shared/styles/images.dart';
 import '../../../shared/styles/styles.dart';
 import '../Events/get_cubit/cubit.dart';
 import '../Events/get_cubit/state.dart';
+import '../Events/payment success.dart';
 
 class FinalReserv extends StatelessWidget {
   const FinalReserv(
@@ -56,7 +57,7 @@ class FinalReserv extends StatelessWidget {
             child: Column(
               children: [
                 Hero(
-                  tag:  'hero-custom-tween',
+                  tag: 'hero-custom-tween',
                   child: Image.network(
                     "${model.postImage}",
                     width: MediaQueryHelper.sizeFromWidth(context, 1),
@@ -74,10 +75,12 @@ class FinalReserv extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [Icon(Icons.access_time), Text(intl.DateFormat('hh:mm a').format(time!))],
+                        children: [
+                          Icon(Icons.access_time),
+                          Text(intl.DateFormat('hh:mm a').format(time!))
+                        ],
                       ),
                       VerticalDivider(
                         thickness: 1,
@@ -120,7 +123,7 @@ class FinalReserv extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text('السعر'),
-                          Text("${model.price}" ' ريال سعودي' ),
+                          Text("${model.price}" ' ريال سعودي'),
                         ],
                       ),
                       Row(
@@ -154,10 +157,13 @@ class FinalReserv extends StatelessWidget {
                   listener: (context, state) {
                     print(state);
                     if (state is ReservationSuccessState) {
-                      navigateTo(context, PaymentContainer());
+                      model.typePrice == "دفع مسبق"
+                          ? navigateTo(context, PaymentContainer())
+                          : navigateAndFinished(context, PaymentSuccess());
                     }
                   },
                   builder: (context, state) {
+                    print(model.typePrice);
                     return ButtonTemplate(
                         color: AppColors.green,
                         text1: 'إتمام الحجز',

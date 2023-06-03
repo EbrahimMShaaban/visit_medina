@@ -18,6 +18,7 @@ import '../../administrator/Activities/postEvent_cubit/state.dart';
 import '../../registration/getUser_cubit/cubit.dart';
 
 enum Places { coffee, resturant, activities }
+enum price { yes ,no}
 
 class ActivitiesOwner extends StatefulWidget {
   ActivitiesOwner({Key? key, required this.titleAppBar, required this.event})
@@ -41,7 +42,12 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
   TextEditingController controllerDate = TextEditingController();
   TextEditingController controllerLocation = TextEditingController();
   Places? _character = Places.resturant;
+
+  price _price = price.yes;
+
   String type = "المطاعم";
+  String typePrice = "دفع مسبق";
+
   var nowDateTime = DateTime.now();
   final formKey = GlobalKey<FormState>();
 
@@ -475,6 +481,48 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                           ],
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              children: [
+                                Radio<price>(
+                                  activeColor: AppColors.primarycolor,
+                                  value: price.yes,
+                                  groupValue: _price,
+                                  onChanged: (price? value) {
+                                    setState(() {
+                                      _price = value!;
+                                      typePrice = 'دفع مسبق';
+                                    });
+                                  },
+                                ),
+                                Text('دفع مسبق',
+                                    style: AppTextStyles.w800.copyWith(
+                                        color: AppColors.primarycolor,
+                                        fontSize: 15)),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Radio<price>(
+                                  activeColor: AppColors.primarycolor,
+                                  value: price.no,
+                                  groupValue: _price,
+                                  onChanged: (price? value) {
+                                    setState(() {
+                                      _price = value!;
+                                      typePrice = 'دفع عند الحضور';
+                                    });
+                                  },
+                                ),
+                                Text('دفع عند الحضور',
+                                    style: AppTextStyles.w800.copyWith(
+                                        color: AppColors.primarycolor,
+                                        fontSize: 15)),
+                              ],
+                            ),
+                          ],
+                        ),                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -657,6 +705,7 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                     //  fontSize: 10,
                                     text1: 'طلب اضافة',
                                     onPressed: () {
+
                                       NameUser =
                                           CacheHelper.getData(key: 'name');
 
@@ -690,6 +739,7 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                                   time: controllerTime.text,
                                                   date: controllerDate.text,
                                                   event: widget.event,
+                                              typePrice: typePrice,
                                                   type: type);
                                         }
                                       }

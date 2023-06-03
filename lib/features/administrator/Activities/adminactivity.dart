@@ -14,6 +14,7 @@ import '../../../shared/network/local/shared_preferences.dart';
 import 'activity_added.dart';
 
 enum Places { coffee, resturant, activities }
+enum price { yes ,no}
 
 class Activities extends StatefulWidget {
   Activities({Key? key, required this.titleAppBar, required this.event})
@@ -36,7 +37,9 @@ class _ActivitiesState extends State<Activities> {
   TextEditingController controllerDate = TextEditingController();
   TextEditingController controllerLocation = TextEditingController();
   Places? _character = Places.resturant;
+  price _price = price.yes;
   String type = "المطاعم";
+  String typePrice = "دفع مسبق";
   var nowDateTime = DateTime.now();
   final formKey = GlobalKey<FormState>();
 
@@ -477,6 +480,51 @@ class _ActivitiesState extends State<Activities> {
                             ),
                           ],
                         ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              children: [
+                                Radio<price>(
+                                  activeColor: AppColors.primarycolor,
+                                  value: price.yes,
+                                  groupValue: _price,
+                                  onChanged: (price? value) {
+                                    setState(() {
+                                      _price = value!;
+                                      typePrice = 'دفع مسبق';
+                                    });
+                                  },
+                                ),
+                                Text('دفع مسبق',
+                                    style: AppTextStyles.w800.copyWith(
+                                        color: AppColors.primarycolor,
+                                        fontSize: 15)),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Radio<price>(
+                                  activeColor: AppColors.primarycolor,
+                                  value: price.no,
+                                  groupValue: _price,
+                                  onChanged: (price? value) {
+                                    setState(() {
+                                      _price = value!;
+                                      typePrice = 'دفع عند الحضور';
+                                    });
+                                  },
+                                ),
+                                Text('دفع عند الحضور',
+                                    style: AppTextStyles.w800.copyWith(
+                                        color: AppColors.primarycolor,
+                                        fontSize: 15)),
+                              ],
+                            ),
+                          ],
+                        ),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -660,6 +708,7 @@ class _ActivitiesState extends State<Activities> {
                               //  fontSize: 10,
                               text1: 'اضافة',
                               onPressed: () {
+
                                 NameUser =
                                     CacheHelper.getData(key: 'name');
 
@@ -691,6 +740,7 @@ class _ActivitiesState extends State<Activities> {
                                         time: controllerTime.text,
                                         date: controllerDate.text,
                                         event: widget.event,
+                                        typePrice:typePrice,
                                         type: type);
                                   }
                                 }

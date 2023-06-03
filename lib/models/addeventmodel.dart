@@ -14,6 +14,7 @@ class EventModel {
   String? event;
   String? postImage;
   String? type;
+  String? typePrice;
   String? name;
   String? nameEvent;
 
@@ -33,6 +34,7 @@ class EventModel {
     this.postImage,
     this.event,
     this.type,
+    this.typePrice,
     this.name,
     this.nameEvent,
   });
@@ -53,6 +55,7 @@ class EventModel {
     postImage = json['postImage'];
     event = json['event'];
     type = json['type'];
+    typePrice = json['typePrice'];
     name = json['name'];
     nameEvent = json['nameEvent'];
   }
@@ -73,6 +76,7 @@ class EventModel {
       'date': date,
       'postImage': postImage,
       'type': type,
+      'typePrice': typePrice,
       'name': name,
       'nameEvent': nameEvent,
       'Favourite': favorite,

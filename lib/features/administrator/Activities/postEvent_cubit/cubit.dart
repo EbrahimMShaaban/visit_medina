@@ -52,6 +52,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
     required String date,
     required String event,
     required String type,
+    required String typePrice,
     required String? name,
     required String? nameEvent,
   }) {
@@ -79,6 +80,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
             name: name,
             nameEvent: nameEvent,
             type: type,
+          typePrice: typePrice,
             postImage: value,
             linkAddress: linkAddress,
         );
@@ -104,6 +106,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
     required String? name,
     required String? nameEvent,
     required String type,
+    required String typePrice,
     String? postImage,
   }) {
     emit(AddEventOrPlaceLoadingState());
@@ -125,6 +128,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
       'date': date,
       'postImage': postImage,
       'type': type,
+      'typePrice': typePrice,
       'event': event,
       'name': name,
     })
