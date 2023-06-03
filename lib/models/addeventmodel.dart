@@ -1,5 +1,6 @@
 class EventModel {
   String? address;
+  String? linkAddress;
   String? uId;
   String? docuId;
   String? description;
@@ -13,11 +14,13 @@ class EventModel {
   String? event;
   String? postImage;
   String? type;
+  String? typePrice;
   String? name;
   String? nameEvent;
 
   EventModel({
     this.address,
+    this.linkAddress,
     this.uId,
     this.docuId,
     this.description,
@@ -31,12 +34,14 @@ class EventModel {
     this.postImage,
     this.event,
     this.type,
+    this.typePrice,
     this.name,
     this.nameEvent,
   });
 
   EventModel.fromJson(Map<String, dynamic> json) {
     address = json['address'];
+    linkAddress = json['linkAddress'];
     uId = json['uId'];
     docuId = json['docuId'];
     description = json['description'];
@@ -50,6 +55,7 @@ class EventModel {
     postImage = json['postImage'];
     event = json['event'];
     type = json['type'];
+    typePrice = json['typePrice'];
     name = json['name'];
     nameEvent = json['nameEvent'];
   }
@@ -57,6 +63,7 @@ class EventModel {
   Map<String, dynamic> toMap() {
     return {
       'address': address,
+      'linkAddress': linkAddress,
       'event': event,
       'uId': uId,
       'docuId': docuId,
@@ -69,6 +76,7 @@ class EventModel {
       'date': date,
       'postImage': postImage,
       'type': type,
+      'typePrice': typePrice,
       'name': name,
       'nameEvent': nameEvent,
       'Favourite': favorite,

@@ -18,6 +18,7 @@ import '../../administrator/Activities/postEvent_cubit/state.dart';
 import '../../registration/getUser_cubit/cubit.dart';
 
 enum Places { coffee, resturant, activities }
+enum price { yes ,no}
 
 class ActivitiesOwner extends StatefulWidget {
   ActivitiesOwner({Key? key, required this.titleAppBar, required this.event})
@@ -31,6 +32,8 @@ class ActivitiesOwner extends StatefulWidget {
 
 class _ActivitiesOwnerState extends State<ActivitiesOwner> {
   TextEditingController controllerAddres = TextEditingController();
+  TextEditingController controllerLinkAddress = TextEditingController();
+
   TextEditingController controllerNameEvent = TextEditingController();
   TextEditingController controllerdescription = TextEditingController();
   TextEditingController controllernumber = TextEditingController();
@@ -39,7 +42,12 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
   TextEditingController controllerDate = TextEditingController();
   TextEditingController controllerLocation = TextEditingController();
   Places? _character = Places.resturant;
+
+  price _price = price.yes;
+
   String type = "المطاعم";
+  String typePrice = "دفع مسبق";
+
   var nowDateTime = DateTime.now();
   final formKey = GlobalKey<FormState>();
 
@@ -51,9 +59,9 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
         listener: (context, state) {
           print(state);
           if (state is AddEventOrPlaceSuccessState) {
-            navigateAndFinished(context, ActivityWaiting(title: widget.titleAppBar));
+            navigateAndFinished(
+                context, ActivityWaiting(title: widget.titleAppBar));
           }
-
         },
         builder: (context, state) {
           return Form(
@@ -168,10 +176,11 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                         enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(40))),   focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
+                                                Radius.circular(40))),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
                                         focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
@@ -232,10 +241,68 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                         errorBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(40))),   focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
+                                                Radius.circular(40))),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
+                                        disabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))))),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                                flex: 1,
+                                child: Text(
+                                  'رابط العنوان:',
+                                  style: AppTextStyles.w800.copyWith(
+                                      color: AppColors.primarycolor,
+                                      fontSize: 15),
+                                )),
+                            Expanded(
+                              flex: 3,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0, vertical: 10),
+                                child: TextFormField(
+                                    validator: (String? value) {
+                                      if (value!.isEmpty) {
+                                        return 'الارجاء ادخال العنوان ';
+                                      }
+                                      return null;
+                                    },
+                                    cursorColor: AppColors.blue,
+                                    controller: controllerLinkAddress,
+                                    decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        filled: true,
+                                        fillColor: AppColors.greenlight,
+
+                                        // labelStyle: AppTextStyles.hittext,
+                                        // hintStyle: AppTextStyles.hittext,
+                                        enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
+                                        errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
                                         disabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
@@ -286,10 +353,11 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                         errorBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(40))),   focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
+                                                Radius.circular(40))),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
                                         disabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
@@ -338,10 +406,11 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                         focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(40))),   focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
+                                                Radius.circular(40))),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
                                         errorBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
@@ -394,10 +463,11 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                         focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(40))),   focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
+                                                Radius.circular(40))),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
                                         errorBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
@@ -411,6 +481,48 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                           ],
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Row(
+                              children: [
+                                Radio<price>(
+                                  activeColor: AppColors.primarycolor,
+                                  value: price.yes,
+                                  groupValue: _price,
+                                  onChanged: (price? value) {
+                                    setState(() {
+                                      _price = value!;
+                                      typePrice = 'دفع مسبق';
+                                    });
+                                  },
+                                ),
+                                Text('دفع مسبق',
+                                    style: AppTextStyles.w800.copyWith(
+                                        color: AppColors.primarycolor,
+                                        fontSize: 15)),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Radio<price>(
+                                  activeColor: AppColors.primarycolor,
+                                  value: price.no,
+                                  groupValue: _price,
+                                  onChanged: (price? value) {
+                                    setState(() {
+                                      _price = value!;
+                                      typePrice = 'دفع عند الحضور';
+                                    });
+                                  },
+                                ),
+                                Text('دفع عند الحضور',
+                                    style: AppTextStyles.w800.copyWith(
+                                        color: AppColors.primarycolor,
+                                        fontSize: 15)),
+                              ],
+                            ),
+                          ],
+                        ),                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -443,10 +555,11 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                         enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
-                                                Radius.circular(40))),   focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide.none,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(40))),
+                                                Radius.circular(40))),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(40))),
                                         focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
@@ -493,7 +606,6 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                         border: InputBorder.none,
                                         filled: true,
                                         fillColor: AppColors.greenlight,
-
                                         enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none,
                                             borderRadius: BorderRadius.all(
@@ -593,6 +705,7 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                     //  fontSize: 10,
                                     text1: 'طلب اضافة',
                                     onPressed: () {
+
                                       NameUser =
                                           CacheHelper.getData(key: 'name');
 
@@ -608,6 +721,9 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                           AddEventCubit.get(context)
                                               .uploadPostImage(
                                                   name: NameUser,
+                                                  linkAddress:
+                                                      controllerLinkAddress
+                                                          .text,
                                                   nameEvent:
                                                       controllerNameEvent.text,
                                                   dateTime:
@@ -623,6 +739,7 @@ class _ActivitiesOwnerState extends State<ActivitiesOwner> {
                                                   time: controllerTime.text,
                                                   date: controllerDate.text,
                                                   event: widget.event,
+                                              typePrice: typePrice,
                                                   type: type);
                                         }
                                       }

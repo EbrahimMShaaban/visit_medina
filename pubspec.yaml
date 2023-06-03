@@ -60,6 +60,7 @@ dependencies:
   flutter_time_picker_spinner: ^2.0.0
   flutter_rating_bar:
   flutter_native_splash: ^2.2.19
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:

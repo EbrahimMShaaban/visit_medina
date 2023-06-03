@@ -43,6 +43,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
   void uploadPostImage({
     required String dateTime,
     required String address,
+    required String linkAddress,
     required String description,
     required bool accept,
     required String price,
@@ -51,6 +52,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
     required String date,
     required String event,
     required String type,
+    required String typePrice,
     required String? name,
     required String? nameEvent,
   }) {
@@ -78,7 +80,10 @@ class AddEventCubit extends Cubit<AddEventStates> {
             name: name,
             nameEvent: nameEvent,
             type: type,
-            postImage: value);
+          typePrice: typePrice,
+            postImage: value,
+            linkAddress: linkAddress,
+        );
       }).catchError((error) {
         emit(AddEventOrPlaceErrorState(error.toString()));
       });
@@ -90,6 +95,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
   void createPost({
     required String dateTime,
     required String address,
+    required String linkAddress,
     required String description,
     required bool accept,
     required String price,
@@ -100,6 +106,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
     required String? name,
     required String? nameEvent,
     required String type,
+    required String typePrice,
     String? postImage,
   }) {
     emit(AddEventOrPlaceLoadingState());
@@ -109,6 +116,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
         .collection('posts')
         .add({
       'address': address,
+      'linkAddress': linkAddress,
       'uId': UID,
       'description': description,
       'accept': accept,
@@ -120,6 +128,7 @@ class AddEventCubit extends Cubit<AddEventStates> {
       'date': date,
       'postImage': postImage,
       'type': type,
+      'typePrice': typePrice,
       'event': event,
       'name': name,
     })

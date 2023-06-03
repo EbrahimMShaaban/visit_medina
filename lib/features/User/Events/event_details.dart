@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:visit_medina/features/User/Events/rating.dart';
 import 'package:visit_medina/shared/components/components.dart';
@@ -11,7 +12,8 @@ import '../../../models/addeventmodel.dart';
 import '../../../shared/components/end_point.dart';
 import '../../registration/regist_screen/view.dart';
 import '../reversaation/view.dart';
-import 'map.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventDetails extends StatelessWidget {
   const EventDetails({Key? key, required this.model}) : super(key: key);
@@ -51,8 +53,7 @@ class EventDetails extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 1.8,
               padding: EdgeInsets.only(bottom: 5),
               child: Hero(
-
-                tag:  'hero-custom-tween',
+                tag: 'hero-custom-tween',
                 child: Image.network(
                   "${model.postImage}",
                   fit: BoxFit.cover,
@@ -92,7 +93,7 @@ class EventDetails extends StatelessWidget {
                 // ),
                 children: <TextSpan>[
                   TextSpan(
-                    text:  "${model.event}",
+                    text: "${model.event}",
                     style: AppTextStyles.w800
                         .copyWith(color: AppColors.primarycolor, fontSize: 25),
                     //  style: AppTextStyles.lrTitles
@@ -128,7 +129,7 @@ class EventDetails extends StatelessWidget {
                 // ),
                 children: <TextSpan>[
                   TextSpan(
-                    text:  "${model.date}",
+                    text: "${model.date}",
                     style: AppTextStyles.w800
                         .copyWith(color: AppColors.primarycolor, fontSize: 19),
                     //  style: AppTextStyles.lrTitles
@@ -141,11 +142,33 @@ class EventDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(Icons.location_on_outlined, color: AppColors.primarycolor),
-                Text(
-                  "${model.address}",
-                  style: AppTextStyles.w600
-                      .copyWith(color: Colors.black54, fontSize: 15),
-                )
+                Link(
+                    uri: Uri.parse("${model.linkAddress}"),
+                    //target: LinkTarget.self,
+                    builder: (context, followLink) {
+                      return RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                            text: '',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "${model.address}",
+                            style: AppTextStyles.w600.copyWith(
+                              color: Colors.blueAccent,
+                              fontSize: 20,
+                              decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            recognizer: TapGestureRecognizer()..onTap = followLink,
+                          ),
+                        ]),
+                      );
+                    }),
+
               ],
             ),
             Padding(
@@ -166,7 +189,11 @@ class EventDetails extends StatelessWidget {
                     text1: 'شاركنا رأيك',
                     onPressed: () {
                       UID != null
-                          ? navigateTo(context, RatingView(model: model,))
+                          ? navigateTo(
+                              context,
+                              RatingView(
+                                model: model,
+                              ))
                           : showMyDialog(
                               message: " تسجيل الدخول لحجز",
                               context: context,
@@ -180,7 +207,11 @@ class EventDetails extends StatelessWidget {
                     text1: 'احجز الأن',
                     onPressed: () {
                       UID != null
-                          ? navigateTo(context, ReversationView(model: model,))
+                          ? navigateTo(
+                              context,
+                              ReversationView(
+                                model: model,
+                              ))
                           : showMyDialog(
                               message: " تسجيل الدخول لحجز",
                               context: context,
